@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "typechain": "typechain --target ethers-v5 --out-dir src/typechain src/abi/*.json",
+    "postinstall": "npm run typechain"
   },
   "dependencies": {
     "@metamask/sdk": "^0.1.0",
