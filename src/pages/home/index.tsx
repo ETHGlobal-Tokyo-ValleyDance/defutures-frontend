@@ -15,7 +15,7 @@ const Home = () => {
     <main className="flex flex-col justify-center items-center">
       <div className="flex justify-center max-w-screen-lg mx-auto py-20 px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center w-max">
-          <h1 className="text-primary-500 text-3xl leading-9 font-extrabold sm:text-4xl sm:leading-10">
+          <h1 className="text-primary-500 text-shadow-gray text-3xl leading-9 font-extrabold sm:text-4xl sm:leading-10">
             Fully Decentralized <br />
             Futures Trading <br />
             in crypto
@@ -36,7 +36,7 @@ const Home = () => {
       </div>
 
       <div className="flex w-full p-10 bg-primary-100 justify-center items-center flex-col">
-        <h1 className="text-primary-500 text-5xl mb-20 leading-9 font-extrabold  sm:leading-10">
+        <h1 className="text-primary-500 text-shadow-gray text-5xl mb-20 leading-9 font-extrabold  sm:leading-10">
           Problem
         </h1>
         <h1 className="text-gray-500 text-xl mb-20 leading-9 font-extrabold sm:text-4xl sm:leading-10">
@@ -71,7 +71,7 @@ const Home = () => {
       </div>
 
       <div className="flex w-full mt-6  items-center justify-center flex-col">
-        <div className="text-primary-500 flex mt-10 items-center justify-center text-5xl font-bold mb-10">
+        <div className="text-primary-500 text-shadow-gray flex mt-10 items-center justify-center text-5xl font-bold mb-10">
           Solution
         </div>
 
@@ -131,7 +131,7 @@ const Home = () => {
 
       <div className="bg-primary-50 mb-20 shadow overflow-hidden sm:rounded-lg">
         <div className="border-b border-gray-200 px-4 py-5 sm:px-6">
-          <h3 className="text-lg leading-6 font-medium text-gray-900">
+          <h3 className="text-lg leading-6 font-medium text-primary-500">
             Frequently Asked Questions
           </h3>
           <p className="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
@@ -193,7 +193,7 @@ const Home = () => {
             <div className="flex">
               <img src={home2} />
               <div className="flex flex-col items-center justify-center ml-5">
-                <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-primary-500 sm:text-4xl">
+                <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-primary-500 text-shadow-gray sm:text-4xl">
                   Meet our team
                 </p>
                 <p className="mt-4 max-w-2xl text-xl leading-7 text-gray-500 lg:mx-auto">

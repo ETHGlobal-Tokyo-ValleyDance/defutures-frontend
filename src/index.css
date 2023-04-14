@@ -14,3 +14,6 @@
 .btn-disable {
   @apply text-white bg-gradient-to-r from-slate-500  to-gray-500 hover:bg-gradient-to-l focus:ring-slate-200 dark:focus:ring-gray-800;
 }
+.text-shadow-gray {
+  text-shadow: 2px 2px 2px #ccc;
+}

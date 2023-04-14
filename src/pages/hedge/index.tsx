@@ -14,8 +14,8 @@ const Hedge = () => {
   } = useHedge();
 
   return (
-    <div className="p-8">
-      <div className="flex flex-col w-[400px]">
+    <div className="flex bg-primary-100 w-[600px] h-[500px] m-auto mt-10 mb-10 items-center justify-center p-8 rounded shadow-xl">
+      <div className="flex flex-col w-[400px] ">
         <p className="font-semibold">Total Amount</p>
         <NumberInput value={totalAmount} onChange={setTotalAmount} />
 
@@ -36,10 +36,12 @@ const Hedge = () => {
         </div>
 
         <hr className="my-4" />
-        
+
         <div className="mt-2 flex justify-between">
           <p className="font-semibold">Spot vs. Hedge Ratio</p>
-          <p>{spotPercent} : {(1000 - 10*+spotPercent) / 10}</p>
+          <p>
+            {spotPercent} : {(1000 - 10 * +spotPercent) / 10}
+          </p>
         </div>
         <div className="mt-2 flex justify-between">
           <p className="font-semibold">Current Margin Ratio</p>
