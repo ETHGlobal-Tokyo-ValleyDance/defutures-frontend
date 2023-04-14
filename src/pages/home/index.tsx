@@ -36,15 +36,15 @@ const Home = () => {
           </div>
         </div>
 
-        <img src={home1} />
+        <img className=" animate-pulse duration-1000" src={home1} />
       </div>
 
       <div className="flex w-full p-10 bg-primary-100 justify-center items-center flex-col">
         <h1 className="text-primary-500 text-shadow-gray text-5xl mb-20 leading-9 font-extrabold  sm:leading-10">
           Problem
         </h1>
-        <h1 className="text-gray-500 text-xl mb-20 leading-9 font-extrabold sm:text-4xl sm:leading-10">
-          현재 선물시장의 문제점
+        <h1 className=" text-primary-400 text-lg  leading-9 font-extrabold sm:text-4xl sm:leading-10">
+          Problems with the current futures market
         </h1>
         <div className="flex flex-row ">
           <div className="flex items-center flex-col m-16">
@@ -59,17 +59,23 @@ const Home = () => {
           </div>
           <div className="flex  items-center flex-col m-16">
             <CgDanger className="text-primary-500 text-5xl mb-3" />
-            <h2 className="text-primary-700 mb-6">problem1</h2>
-            <p className="text-primary-900 w-28">
-              비주류의 높은 가격변동성에 포지션이 노출되어 버린다는 문제가 있다.
-            </p>
+            <h2 className="text-primary-700 mb-6">위험성</h2>
+            <div className=" text-center text-primary-900 w-48">
+              블록체인 선물시장에서는 투자자들이 자신의 포지션을 헷징하기 위해
+              복잡한 전략을 사용해야 하는 경우가 많습니다. 이는 새로운
+              투자자들이 시장에 진입하기 어렵게 만들어 불안정성을 야기할 수
+              있습니다.
+            </div>
           </div>
           <div className="flex  items-center flex-col m-16 ">
             <SiHiveBlockchain className="text-primary-500 text-5xl mb-3" />
-            <h2 className="text-primary-700">problem1</h2>
-            <p className="text-primary-900 w-28">
-              현재 선물시장에서의 불안정성​+ 애매한 탈중앙화​
-            </p>
+            <h2 className="text-primary-700 mb-6">애매한 탈중앙화</h2>
+            <div className=" text-center text-primary-900 w-48">
+              블록체인 선물시장에서는 투자자들이 자신의 포지션을 헷징하기 위해
+              복잡한 전략을 사용해야 하는 경우가 많습니다. 이는 새로운
+              투자자들이 시장에 진입하기 어렵게 만들어 불안정성을 야기할 수
+              있습니다.
+            </div>
           </div>
         </div>
       </div>
@@ -83,7 +89,7 @@ const Home = () => {
           <div>
             <div className="flex flex-col items-center justify-center">
               <h1 className="text-xl mb-2 text-primary-700 font-bold">
-                Invest Smart
+                안정성
               </h1>
               <p className="text-primary-900">
                 Lorem ipsum dolor sit amet, <br />
@@ -104,7 +110,7 @@ const Home = () => {
           <div>
             <div className="flex flex-col items-center justify-center">
               <h1 className="text-xl mb-2 text-primary-700 font-bold">
-                Invest Smart
+                친화적인 ux
               </h1>
               <p className="text-primary-900">
                 Lorem ipsum dolor sit amet, <br />
@@ -118,7 +124,7 @@ const Home = () => {
           <div>
             <div className="flex flex-col items-center justify-center">
               <h1 className="text-xl mb-2 text-primary-700 font-bold">
-                Invest Smart
+                완전한 탈중앙화
               </h1>
               <p className="text-primary-900">
                 Lorem ipsum dolor sit amet, <br />
@@ -204,9 +210,18 @@ const Home = () => {
                   Lorem ipsum dolor sit amet consect adipisicing elit. Possimus
                   magnam voluptatum cupiditate veritatis in accusamus quisquam.
                 </p>
+                <div className="mt-8 flex justify-center">
+                  <div className="rounded-md shadow">
+                    <Link to="/future">
+                      <button className="btn-lg btn-primary">
+                        Get started
+                      </button>
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="flex items-center justify-between mt-10">
+            <div className="flex items-center justify-between mt-24">
               <Profile
                 img={jiho}
                 role={"FrontEnd Dev"}

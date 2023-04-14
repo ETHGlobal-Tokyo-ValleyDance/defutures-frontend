@@ -16,7 +16,7 @@ const Hedge = () => {
   return (
     <div className="flex bg-primary-50 w-[600px] h-[500px] m-auto mt-10 mb-10 items-center justify-center p-8 rounded shadow-xl">
       <div className="flex flex-col w-[400px] ">
-        <p className="font-semibold mb-3">Total Amount</p>
+        <p className="font-semibold  mb-3">Total Amount</p>
         <NumberInput value={totalAmount} onChange={setTotalAmount} />
 
         <p className="mt-4"> Hedge Ratio </p>
