@@ -10,12 +10,13 @@ import {
 import { commaFormat, compactFormat, fromExponential } from "utils";
 import { Chain } from "./Chain";
 import { getAddress } from "ethers/lib/utils";
-import { CHAINID, TokenData } from "interfaces/config-data.interface";
+
 import TOKENS from "./tokens.data";
 import LPTOKENS from "./lp-tokens.data";
 import { FormatToken } from "interfaces/formatToken.interface";
 import CHAINS from "./chain.data";
-import { ERC20 } from "typechain";
+// import { ERC20 } from "typechain";
+import { CHAINID, TokenData } from "interfaces/config-data.interface";
 
 export class Token implements TokenData {
   /**
@@ -119,7 +120,11 @@ export class Token implements TokenData {
     return new providers.JsonRpcProvider(CHAINS[this.chainId].rpcUrl);
   }
 
-  getContract(): ERC20 {
-    return new Contract(this.address, ERC20ABI, this.getProvider()) as ERC20;
+  getContract() {
+    return new Contract(this.address, ERC20ABI, this.getProvider());
   }
+  // getContract(): ERC20 {
+  //   return new Contract(this.address, ERC20ABI, this.getProvider()) ;
+  //   return new Contract(this.address, ERC20ABI, this.getProvider()) as ERC20;
+  // }
 }

@@ -66,11 +66,12 @@ export const useFuture = () => {
     const value = utils.parseEther(_value);
     setLongAmount(_value);
     const _strikeAmount = shortToken.format(
-      getStrikeAmount(
-        value,
-        futureMarket.leadingLong,
-        futureMarket.leadingShort
-      )
+      //   getStrikeAmount(
+      //     value,
+      //     futureMarket.leadingLong,
+      //     futureMarket.leadingShort
+      //   )
+      parseEther("100")
     );
     setShortAmount(_strikeAmount);
 
