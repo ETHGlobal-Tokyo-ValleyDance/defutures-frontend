@@ -1,6 +1,6 @@
 import { BigNumber } from "ethers";
-import { parseEther } from "ethers/lib/utils";
-import { useEffect, useMemo, useState } from "react";
+import { formatEther, parseEther } from "ethers/lib/utils";
+import { ChangeEventHandler, useEffect, useMemo, useState } from "react";
 import { getAmountOut, getStrikeAmount } from "utils/uniswap-lib";
 
 //   tokenA: Token,
@@ -13,7 +13,7 @@ const mockContract = async (): Promise<HedgeInfo> => {
     leadingIn: parseEther("80"),
     leadingOut: parseEther("1000"),
     minMarginBps: 1000,
-    updatedAt: new Date().getTime()
+    updatedAt: new Date().getTime(),
   };
 };
 
@@ -40,17 +40,19 @@ export const useHedge = () => {
 
   /** Calculated Amounts */
   // minHedgeAmount only depends on totalAmount
-  const minHedgeAmount = useMemo(() => {
+  const minHedgeAmount:number = useMemo(() => {
     if (!hedgeInfo) return 0;
     // minHedge / (tot/2 - minHedge) = minMarginBps / 1E4
     // -> minHedge = minMarginBps * total / (2E4 + minMarginBps)
-    return parseEther(totalAmount)
-      .mul(hedgeInfo.minMarginBps)
-      .div(2e4 + hedgeInfo.minMarginBps);
+    return +formatEther(
+      parseEther(totalAmount)
+        .mul(hedgeInfo.minMarginBps)
+        .div(2e4 + hedgeInfo.minMarginBps)
+    );
   }, [hedgeInfo?.updatedAt, totalAmount]);
 
   const [marginRatio, tolerance] = useMemo(() => {
-    if (!hedgeInfo) return [0, 0];
+    if (!hedgeInfo || !+spotPercent || !+totalAmount) return [0, 0];
     const total = parseEther(totalAmount);
 
     // total = spotAmount + hedgeAmount
@@ -86,24 +88,34 @@ export const useHedge = () => {
       .sub(hedgeQuote)
       .mul(1e4)
       .div(1e4 - hedgeInfo.minMarginBps);
-    
-    const _tolerance = strikeAmount.mul(1E4).div(liquidatedPoint).toNumber() / 100 - 100;
+
+    const _tolerance =
+      (strikeAmount.mul(1e4).div(liquidatedPoint).toNumber() - 10000) / 100;
 
     return [_marginRatio, _tolerance];
-  }, [hedgeInfo?.updatedAt, totalAmount, spotPercent]);
+  }, [hedgeInfo?.updatedAt, spotPercent]);
 
   useEffect(() => {
     mockContract().then(setHedgeInfo);
   }, []);
 
+  const onChangeSpotPercent: ChangeEventHandler<HTMLInputElement> = ({
+    target: { value },
+  }) => {
+    setSpotPercent(value);
+  };
+
+  const maxSpotPercent = 100 - Math.floor(1E4 * minHedgeAmount / +totalAmount) / 100;
+
   return {
-    totalAmount, 
+    totalAmount,
     spotPercent,
+    maxSpotPercent,
     minHedgeAmount,
     marginRatio,
     tolerance,
     minMarginBps: hedgeInfo?.minMarginBps || 0,
     setTotalAmount,
-    setSpotPercent,
-  }
+    onChangeSpotPercent,
+  };
 };
