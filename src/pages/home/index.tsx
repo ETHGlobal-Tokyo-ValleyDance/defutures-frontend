@@ -24,9 +24,7 @@ const Home = () => {
           <div className="mt-8 flex justify-center">
             <div className="rounded-md shadow">
               <Link to="/future">
-                <button className="btn-lg btn-primary">
-                Get started
-                </button>
+                <button className="btn-lg btn-primary">Get started</button>
               </Link>
             </div>
           </div>
