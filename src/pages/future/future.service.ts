@@ -4,7 +4,7 @@ import { CHAINID } from "interfaces/config-data.interface";
 import { Token } from "modules/Token";
 import { useEffect, useMemo, useState } from "react";
 import { useWallet } from "states/wallet.state";
-import { getStrikeAmount } from "streams/v2.calc";
+//import { getStrikeAmount } from "streams/v2.calc";
 
 const mockContract = async (
   tokenA: Token,

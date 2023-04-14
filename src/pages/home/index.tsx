@@ -21,8 +21,7 @@ const Home = () => {
             in crypto
           </h1>
           <p className="mt-3 text-xl leading-7 text-gray-500 sm:mt-4">
-            Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam
-            voluptatum cupiditate veritatis in accusamus quisquam.
+            You can reduce uncertain risks and earn high returns.
           </p>
           <div className="mt-8 flex justify-center">
             <div className="rounded-md shadow">
@@ -46,15 +45,17 @@ const Home = () => {
         <div className="flex flex-row ">
           <div className="flex items-center flex-col m-16">
             <AiFillCloseCircle className="text-primary-500 text-5xl mb-3" />
-            <h2 className="text-primary-700">problem1</h2>
-            <p className="text-primary-900 w-28">
-              DEX에 투자하여 수익을 얻기 위해서는 2개 이상의 토큰을 예치해야
-              한다.
-            </p>
+            <h2 className="text-primary-700 mb-6"> 구린 진입성</h2>
+            <div className=" text-center text-primary-900 w-48">
+              블록체인 선물시장에서는 투자자들이 자신의 포지션을 헷징하기 위해
+              복잡한 전략을 사용해야 하는 경우가 많습니다. 이는 새로운
+              투자자들이 시장에 진입하기 어렵게 만들어 불안정성을 야기할 수
+              있습니다.
+            </div>
           </div>
           <div className="flex  items-center flex-col m-16">
             <CgDanger className="text-primary-500 text-5xl mb-3" />
-            <h2 className="text-primary-700">problem1</h2>
+            <h2 className="text-primary-700 mb-6">problem1</h2>
             <p className="text-primary-900 w-28">
               비주류의 높은 가격변동성에 포지션이 노출되어 버린다는 문제가 있다.
             </p>
@@ -142,55 +143,44 @@ const Home = () => {
           <dl>
             <div className="bg-primary-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm leading-5 font-medium text-gray-500">
-                What is your return policy?
+                선물 계약의 기간은 얼마나 됩니까?
               </dt>
               <dd className="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                nec nisi mauris. Sed ac enim aliquet, faucibus diam at,
-                pellentesque tortor. In hac habitasse platea dictumst. Nullam id
-                sem vel nunc pulvinar vulputate at quis massa. Donec consequat
-                libero nec elit auctor, ac faucibus sapien varius. Praesent
-                vitae ante non dolor faucibus fermentum vel quis eros. Fusce in
-                sapien magna.
+                선물 계약의 기간은 유동적으로 조절 가능합니다. 기간은 사용자가
+                원하는 만큼 설정할 수 있으며, 일반적으로 1주부터 6개월까지의
+                기간을 사용합니다.
               </dd>
             </div>
 
             <div className="bg-primary-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm leading-5 font-medium text-gray-500">
-                Do you offer free shipping?
+                선물 계약의 가격은 어떻게 결정됩니까?
               </dt>
               <dd className="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                Yes! We offer free shipping on all orders over $50.
+                선물 계약의 가격은 시장에서의 현재 가격, 거래량, 시장 예측 등
+                여러 요인을 고려하여 결정됩니다. 이를 통해 시장에 대한 신뢰성을
+                높이고 사용자들의 이익을 극대화할 수 있습니다.
               </dd>
             </div>
 
             <div className="bg-primary-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm leading-5 font-medium text-gray-500">
-                How long will it take to receive my order?
+                선물 계약의 수수료는 어떻게 책정됩니까?
               </dt>
               <dd className="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                nec nisi mauris. Sed ac enim aliquet, faucibus diam at,
-                pellentesque tortor. In hac habitasse platea dictumst. Nullam id
-                sem vel nunc pulvinar vulputate at quis massa. Donec consequat
-                libero nec elit auctor, ac faucibus sapien varius. Praesent
-                vitae ante non dolor faucibus fermentum vel quis eros. Fusce in
-                sapien magna.
+                선물 계약의 수수료는 선물 거래소에 따라 다릅니다. 우리 서비스는
+                수수료를 낮게 유지하며, 사용자들이 저렴하게 선물 계약을 체결할
+                수 있도록 노력하고 있습니다.
               </dd>
             </div>
 
             <div className="bg-primary-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm leading-5 font-medium text-gray-500">
-                How long will it take to receive my order?
+                어떤 암호화폐가 대상이 되는 것인가요?
               </dt>
               <dd className="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                nec nisi mauris. Sed ac enim aliquet, faucibus diam at,
-                pellentesque tortor. In hac habitasse platea dictumst. Nullam id
-                sem vel nunc pulvinar vulputate at quis massa. Donec consequat
-                libero nec elit auctor, ac faucibus sapien varius. Praesent
-                vitae ante non dolor faucibus fermentum vel quis eros. Fusce in
-                sapien magna.
+                우리 서비스에서는 다양한 암호화폐가 대상이 됩니다. 사용자들은
+                원하는 암호화폐를 선택하여 선물 계약을 체결할 수 있습니다.
               </dd>
             </div>
           </dl>
