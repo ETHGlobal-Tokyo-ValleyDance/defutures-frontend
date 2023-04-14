@@ -3,6 +3,7 @@ import Header from "components/header";
 import Home from "pages/home";
 import Hedge from "pages/hedge";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Footer from "components/Footer";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path={ROUTES.HOME} element={<Home />} />
           <Route path={ROUTES.HEDGE} element={<Hedge />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </main>
   );
