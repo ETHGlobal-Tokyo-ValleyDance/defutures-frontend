@@ -39,9 +39,10 @@ const Hedge = () => {
 
         <div className="mt-2 flex justify-between text-primary-800">
           <p className="font-semibold">Spot vs. Hedge Ratio</p>
-          <p>
-            {spotPercent} : {(1000 - 10 * +spotPercent) / 10}
-          </p>
+          <div className="flex">
+            <p className=" text-red-600">{spotPercent} </p> :{" "}
+            <p className=" text-blue-600"> {(1000 - 10 * +spotPercent) / 10}</p>
+          </div>
         </div>
         <div className="mt-2 flex justify-between text-primary-800">
           <p className="font-semibold">Current Margin Ratio</p>

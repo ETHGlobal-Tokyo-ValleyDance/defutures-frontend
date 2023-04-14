@@ -65,7 +65,7 @@ const Home = () => {
           <div className="flex items-center flex-col m-16">
             <AiFillCloseCircle className="text-primary-500 text-5xl mb-3" />
             <h2 className="text-primary-700 mb-6"> 구린 진입성</h2>
-            <div className=" text-center text-primary-900 w-48">
+            <div className=" text-center text-gray-600 w-48">
               블록체인 선물시장에서는 투자자들이 자신의 포지션을 헷징하기 위해
               복잡한 전략을 사용해야 하는 경우가 많습니다. 이는 새로운
               투자자들이 시장에 진입하기 어렵게 만들어 불안정성을 야기할 수
