@@ -9,9 +9,9 @@ export class Chain implements ChainData {
   rpcUrl!: string;
   imgUrl!: string;
   defuture!: {
+    router: string;
     dexName: string;
-    routerAddress: string;
-    defutureRouterAddress: string;
+    dexRouter: string;
   };
 
   constructor(chainData: ChainData) {
@@ -35,5 +35,15 @@ export class Chain implements ChainData {
 
     if (found) return found;
     else throw Error(`Chain ${chainId} not found`);
+  }
+
+  getV2DefutureRouter() {
+    return new Contract(
+      this.defuture.router,
+      [],
+      // TODO
+      // UniswapV2DefutureRouterABI,
+      this.getProvider()
+    );
   }
 }

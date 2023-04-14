@@ -10,8 +10,8 @@ const CHAINS: { [chainId in CHAINID]: ChainData } = {
     imgUrl: "",
     defuture: {
       dexName: "QuickSwap V2",
-      routerAddress: "",
-      defutureRouterAddress: ""
+      router: "",
+      dexRouter: ""
     }
   },
   [CHAINID.Baobab]: {
@@ -23,8 +23,8 @@ const CHAINS: { [chainId in CHAINID]: ChainData } = {
     imgUrl: "",
     defuture: {
       dexName: "Klayswap",
-      routerAddress: "",
-      defutureRouterAddress: ""
+      router: "",
+      dexRouter: ""
     }
   },
 
@@ -37,8 +37,8 @@ const CHAINS: { [chainId in CHAINID]: ChainData } = {
     imgUrl: "",
     defuture: {
       dexName: "UniswapV2",
-      routerAddress: "0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82",
-      defutureRouterAddress: ""
+      router: "0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82",
+      dexRouter: ""
     }
   },
 };

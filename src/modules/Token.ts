@@ -17,6 +17,7 @@ import { FormatToken } from "interfaces/formatToken.interface";
 import CHAINS from "./chain.data";
 // import { ERC20 } from "typechain";
 import { CHAINID, TokenData } from "interfaces/config-data.interface";
+import { ERC20 } from "typechain";
 
 export class Token implements TokenData {
   /**
@@ -120,11 +121,7 @@ export class Token implements TokenData {
     return new providers.JsonRpcProvider(CHAINS[this.chainId].rpcUrl);
   }
 
-  getContract() {
-    return new Contract(this.address, ERC20ABI, this.getProvider());
+  getContract():ERC20 {
+    return new Contract(this.address, ERC20ABI, this.getProvider()) as ERC20;
   }
-  // getContract(): ERC20 {
-  //   return new Contract(this.address, ERC20ABI, this.getProvider()) ;
-  //   return new Contract(this.address, ERC20ABI, this.getProvider()) as ERC20;
-  // }
 }

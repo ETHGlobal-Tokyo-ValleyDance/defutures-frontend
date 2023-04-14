@@ -13,9 +13,9 @@ export interface ChainData {
   rpcUrl: string;
   imgUrl: string;
   defuture: {
+    router: string
     dexName: string
-    defutureRouterAddress: string
-    routerAddress: string
+    dexRouter: string
   }
 }
 

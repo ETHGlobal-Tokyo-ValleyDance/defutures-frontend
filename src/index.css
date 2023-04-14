@@ -13,20 +13,21 @@
   font-family: "Pretendard";
 }
 
+.flex-center {
+  @apply flex items-center justify-center;
+}
+
 .btn {
-  @apply focus:ring-2 focus:outline-none font-medium rounded-lg px-5 py-2.5 text-center disabled:opacity-70;
+  @apply pt-0.5 focus:ring-2 focus:outline-none font-medium rounded-lg px-5 h-[42px] flex-center disabled:opacity-70;
 }
 .btn-lg {
-  @apply focus:ring-2 focus:outline-none font-medium rounded-lg text-lg px-6 py-3 text-center;
+  @apply pt-1 focus:ring-2 focus:outline-none font-medium rounded-lg text-lg px-7 h-[52px] text-center;
 }
 .btn-primary {
   @apply text-white bg-gradient-to-r from-purple-500 to-pink-500 enabled:hover:bg-gradient-to-l enabled:focus:ring-purple-200 enabled:dark:focus:ring-purple-800;
 }
 .btn-secondary {
   @apply text-white bg-neutral-900 focus:bg-neutral-700 disabled:bg-neutral-500;
-}
-.flex-center {
-  @apply flex items-center justify-center;
 }
 
 .shadow {

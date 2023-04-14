@@ -1,9 +1,11 @@
 import { NumberInput } from "components/common/NumberInput";
 import { useFuture } from "./future.service";
 import { TokenSelector } from "components/common/TokenSelector";
-import { cn } from "utils";
+import { cn, useModal } from "utils";
+import { FutureModal } from "./future.modal";
 
 const Future = () => {
+  const futures = useFuture();
   const {
     tokenList,
     totalSupply,
@@ -19,10 +21,12 @@ const Future = () => {
     onShortTokenChange,
     onLongAmountChange,
     onShortAmountChange,
-  } = useFuture();
+  } = futures;
 
+  const [isModalOpen, openModal, closeModal] = useModal(false);
   const marginRatio = Math.floor((1e4 * +margin) / +shortAmount) / 100 || 0;
   const isMarginShortage = marginRatio > 0 && marginRatio < minMarginRatio;
+  const isDisabled = !shortAmount && !isMarginShortage;
 
   return (
     <div className="px-24 py-12 flex">
@@ -80,17 +84,13 @@ const Future = () => {
           <div className="flex justify-between items-center">
             <div className="flex items-center">
               <span className="chip chip-blue">Sell</span>
-              <p className="text-2xl mx-3 font-semibold">
-                {shortToken.symbol}
-              </p>
+              <p className="text-2xl mx-3 font-semibold">{shortToken.symbol}</p>
             </div>
 
             <span className="text-2xl font-bold">&#8594;</span>
 
             <div className="flex items-center">
-              <p className="text-2xl mx-3 font-semibold">
-                {longToken.symbol}
-              </p>
+              <p className="text-2xl mx-3 font-semibold">{longToken.symbol}</p>
               <span className="chip chip-primary">Buy</span>
             </div>
           </div>
@@ -161,12 +161,22 @@ const Future = () => {
 
           {/* TX Button */}
           <div className="mt-6 flex-center flex-1">
-            <button className="btn-lg btn-primary">
+            <button
+              disabled={isDisabled}
+              onClick={openModal}
+              className={cn(
+                "btn-lg",
+                isDisabled ? "bg-neutral-300 text-white" : "btn-primary"
+              )}
+            >
               Invest {shortToken.symbol} → {longToken.symbol} DeFuture
             </button>
           </div>
         </div>
       </div>
+
+      {/* Modal */}
+      {isModalOpen && <FutureModal close={closeModal} futures={futures} />}
     </div>
   );
 };
