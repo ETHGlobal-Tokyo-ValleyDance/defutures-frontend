@@ -1,5 +1,7 @@
 import { BigNumber } from "ethers";
 import { formatEther, parseEther } from "ethers/lib/utils";
+import { CHAINID } from "interfaces/config-data.interface";
+import { Token } from "modules/Token";
 import { ChangeEventHandler, useEffect, useMemo, useState } from "react";
 import { getAmountOut, getStrikeAmount } from "utils/uniswap-lib";
 
@@ -12,6 +14,7 @@ const mockContract = async (): Promise<HedgeInfo> => {
     reserveFarm: parseEther("10000000"),
     leadingBase: parseEther("900000"),
     leadingFarm: parseEther("10000000"),
+    totalSupply: 102,
     minMarginBps: 3000,
     updatedAt: new Date().getTime(),
   };
@@ -22,6 +25,7 @@ interface HedgeInfo {
   reserveFarm: BigNumber;
   leadingBase: BigNumber;
   leadingFarm: BigNumber;
+  totalSupply: number;
   minMarginBps: number;
   updatedAt: number;
 }
@@ -29,10 +33,19 @@ interface HedgeInfo {
 // base token: user asset
 // farm token: swapped asset for invest position
 export const useHedge = () => {
+  // TODO: chainId
+  const chainId = CHAINID.LOCAL;
+  const tokenList = Token.fromChain(chainId);
+
+  
+  
   // Defuture & UniswapPair Infos (reserve0,1, leading0,1 ...)
   const [hedgeInfo, setHedgeInfo] = useState<HedgeInfo | null>(null);
-
+  
   /** USER INPUTS **/
+  const [baseSymbol, setBaseSymbol] = useState("USDC");
+  const [farmSymbol, setFarmSymbol] = useState("DOGE");
+
   // totalAmount of user input base token
   const [totalAmount, setTotalAmount] = useState<string>("1");
   // spotAmount / totalAmount, user can choose using slider input
@@ -101,6 +114,13 @@ export const useHedge = () => {
     return [_marginRatio, _tolerance];
   }, [hedgeInfo?.updatedAt, totalAmount, spotPercent]);
 
+  const [baseToken, farmToken]: [Token, Token] = useMemo(() => {
+    return [
+      Token.getBySymbol(chainId, baseSymbol)!,
+      Token.getBySymbol(chainId, farmSymbol)!,
+    ];
+  }, [chainId, baseSymbol, farmSymbol]);
+
   useEffect(() => {
     mockContract().then(setHedgeInfo);
   }, []);
@@ -114,13 +134,19 @@ export const useHedge = () => {
   const maxSpotPercent = 100 - Math.floor(1E4 * minHedgeAmount / +totalAmount) / 100;
 
   return {
+    tokenList,
     totalAmount,
     spotPercent,
     maxSpotPercent,
     minHedgeAmount,
     marginRatio,
     tolerance,
+    totalSupply: hedgeInfo?.totalSupply || 0,
     minMarginBps: hedgeInfo?.minMarginBps || 0,
+    baseToken,
+    farmToken,
+    setBaseSymbol,
+    setFarmSymbol,
     setTotalAmount,
     onChangeSpotPercent,
   };

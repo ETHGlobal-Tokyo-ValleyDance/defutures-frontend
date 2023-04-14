@@ -28,13 +28,14 @@ interface FutureMarket {
 
 // const { chainId } = useWallet();
 export const useFuture = () => {
+  // TODO: chainId
   const chainId = CHAINID.LOCAL;
+  const tokenList = Token.fromChain(chainId);
 
   const [futureMarket, setFutureMarket] = useState<FutureMarket | null>(null);
 
-  const tokenList = Token.fromChain(chainId);
-
-  // state에는 symbol만 저장한다.
+  // in state, save only token symbol
+  // token can be found by chainId & symbol
   const [longTokenSymbol, setLongTokenSymbol] = useState("USDC");
   const [shortTokenSymbol, setShortTokenSymbol] = useState("DOGE");
 

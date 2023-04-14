@@ -20,7 +20,7 @@ export const TokenSelector = ({
   return (
     <div className="select-wrapper">
       <select
-        className=" appearance-none outline-none bg-transparent font-semibold border rounded pl-3 pr-7 py-1"
+        className=" appearance-none outline-none bg-transparent font-semibold border rounded pl-3 pr-7 pt-1.5 py-1"
         onChange={onOptionChanged}
       >
         {tokenList.map((t) => (
