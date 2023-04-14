@@ -1,9 +1,9 @@
+import Home from "pages/home";
+
 function App() {
   return (
   <div>
-    <p className="text-lg">
-      This is home
-    </p>
+    <Home />
   </div>
   );
 }
