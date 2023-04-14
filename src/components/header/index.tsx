@@ -2,14 +2,11 @@ import ROUTES from "routes";
 import { NavItem } from "./NavItem";
 import { useConnectWallet } from "states/wallet.state";
 import { ellipsisAddress } from "utils";
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
   const { account, chainId, connect, disconnect } = useConnectWallet();
-  useEffect(() => {
-    console.log("account", account);
-  }, [account]);
+
   return (
     <header className="border-b border-b-neutral-300 flex flex-col">
       <div className="h-[75px] px-40 flex justify-between items-center">
@@ -37,8 +34,16 @@ const Header = () => {
       <div className="flex mt-2 px-40">
         <NavItem content="Home" path={ROUTES.HOME} />
         <NavItem content="My Asset" path={ROUTES.MY_POSITION} />
-        <NavItem content="Hedge Invest" path={ROUTES.HEDGE} />
-        <NavItem content="Future" path={ROUTES.FUTURE} />
+        <NavItem
+          content="Hedge Invest"
+          path={ROUTES.HEDGE}
+          badge={<span className=" ml-2 chip-sm chip-blue">Beginner</span>}
+        />
+        <NavItem
+          content="Future"
+          path={ROUTES.FUTURE}
+          badge={<span className=" ml-2 chip-sm chip-primary">Expert</span>}
+        />
       </div>
     </header>
   );
