@@ -34,6 +34,74 @@ const Home = () => {
       </div>
 
       <div>
+        <h1 className="text-primary-500 text-3xl leading-9 font-extrabold sm:text-4xl sm:leading-10">
+          Problem
+        </h1>
+        <h1 className="text-primary-500 text-xl leading-9 font-extrabold sm:text-4xl sm:leading-10">
+          현재 선물시장의 문제점
+        </h1>
+      </div>
+
+      <div className="flex w-full mt-6  items-center justify-center flex-col">
+        <div className="text-primary-500 flex mt-10 items-center justify-center text-5xl font-bold mb-10">
+          Market sentiments, portfolio, infra of your cho
+        </div>
+
+        <div className="flex flex-row items-center mb-10">
+          <div>
+            <div className="flex flex-col items-center justify-center">
+              <h1 className="text-xl mb-2 text-primary-700 font-bold">
+                Invest Smart
+              </h1>
+              <p className="text-primary-900">
+                Lorem ipsum dolor sit amet, <br />
+                consectetur adipiscing elit. Sed
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <img src={home3} />
+          </div>
+        </div>
+
+        <div className="flex flex-row items-center mb-10">
+          <div>
+            <img src={home4} />
+          </div>
+          <div>
+            <div className="flex flex-col items-center justify-center">
+              <h1 className="text-xl mb-2 text-primary-700 font-bold">
+                Invest Smart
+              </h1>
+              <p className="text-primary-900">
+                Lorem ipsum dolor sit amet, <br />
+                consectetur adipiscing elit. Sed
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-row items-center mb-10">
+          <div>
+            <div className="flex flex-col items-center justify-center">
+              <h1 className="text-xl mb-2 text-primary-700 font-bold">
+                Invest Smart
+              </h1>
+              <p className="text-primary-900">
+                Lorem ipsum dolor sit amet, <br />
+                consectetur adipiscing elit. Sed
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <img src={home5} />
+          </div>
+        </div>
+      </div>
+
+      <div>
         <div className="max-w-screen-lg mx-auto py-12 px-4 sm:px-6 lg:px-8">
           <div className="lg:text-center">
             <div className="flex">
@@ -57,73 +125,6 @@ const Home = () => {
               <Profile img={home1} role={"FrontEnd Dev"} name={"홍길동"} />
               <Profile img={home1} role={"FrontEnd Dev"} name={"홍길동"} />
             </div>
-          </div>
-        </div>
-      </div>
-      <div className="flex w-full mt-10  items-center justify-center flex-col">
-        <div className="text-primary-500 flex mt-14 items-center justify-center text-4xl font-bold mb-10">
-          Market sentiments, portfolio,
-          <br /> infrastructure of your cho
-        </div>
-
-        <div className="flex flex-row items-center mb-10">
-          <div>
-            <div className="flex flex-col items-center justify-center">
-              <h1 className="text-xl">Invest Smart</h1>
-              <p>
-                Lorem ipsum dolor sit amet, <br />
-                consectetur adipiscing elit. Sed
-              </p>
-            </div>
-          </div>
-
-          <div>
-            <img src={home3} />
-          </div>
-        </div>
-
-        <div className="flex flex-row items-center mb-10">
-          <div>
-            <img src={home4} />
-          </div>
-          <div>
-            <div className="flex flex-col items-center justify-center">
-              <h1 className="text-xl">Invest Smart</h1>
-              <p>
-                Lorem ipsum dolor sit amet, <br />
-                consectetur adipiscing elit. Sed
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex flex-row items-center mb-10">
-          <div>
-            <div className="flex flex-col items-center justify-center">
-              <h1 className="text-xl">Invest Smart</h1>
-              <p>
-                Lorem ipsum dolor sit amet, <br />
-                consectetur adipiscing elit. Sed
-              </p>
-            </div>
-          </div>
-
-          <div>
-            <img src={home5} />
-          </div>
-        </div>
-
-        <div className="flex flex-row mt-[100px] mb-[100px] w-[700px] h-[216px] bg-primary-400  rounded-2xl">
-          <div>
-            <h1 className="mt-[36px] ml-[36px] text-2xl font-bold ">
-              Start Mining Now
-            </h1>
-            <p> ldsfasfasdfsd</p>
-          </div>
-          <div>
-            <button className="mt-[100px] ml-[250px] w-[152px] h-[55px] bg-[#ffffff]">
-              as
-            </button>
           </div>
         </div>
       </div>
