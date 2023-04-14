@@ -128,7 +128,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="bg-white shadow overflow-hidden sm:rounded-lg">
+      <div className="bg-primary-50 mb-20 shadow overflow-hidden sm:rounded-lg">
         <div className="border-b border-gray-200 px-4 py-5 sm:px-6">
           <h3 className="text-lg leading-6 font-medium text-gray-900">
             Frequently Asked Questions
@@ -140,7 +140,7 @@ const Home = () => {
         </div>
         <div>
           <dl>
-            <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <div className="bg-primary-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm leading-5 font-medium text-gray-500">
                 What is your return policy?
               </dt>
@@ -155,7 +155,7 @@ const Home = () => {
               </dd>
             </div>
 
-            <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <div className="bg-primary-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm leading-5 font-medium text-gray-500">
                 Do you offer free shipping?
               </dt>
@@ -164,7 +164,7 @@ const Home = () => {
               </dd>
             </div>
 
-            <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <div className="bg-primary-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm leading-5 font-medium text-gray-500">
                 How long will it take to receive my order?
               </dt>
@@ -182,7 +182,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="flex w-full bg-primary-100 p-6">
+      <div className="flex w-full p-6">
         <div className="flex w-full p-10  justify-center items-center flex-col">
           <div className="lg:text-center">
             <div className="flex">
@@ -210,7 +210,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div>
+      <div className="flex justify-center mb-10 items-center w-full bg-primary-50">
         <img src={ether} />
       </div>
     </main>
