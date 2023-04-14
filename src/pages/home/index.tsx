@@ -15,6 +15,21 @@ import { CgDanger } from "react-icons/cg";
 import { SiHiveBlockchain } from "react-icons/si";
 
 const Home = () => {
+  const plans = [
+    { id: 1, title: "Q2 2023", content: "Product launch", detail: "detail" },
+    {
+      id: 2,
+      title: "Q4 2023",
+      content: "Expanding to new markets",
+      detail: "detail",
+    },
+    {
+      id: 3,
+      title: "Q2 2024",
+      content: "Release of new features",
+      detail: "detail",
+    },
+  ];
   return (
     <main className="flex flex-col justify-center items-center">
       <div className="flex justify-center max-w-screen-lg mx-auto py-20 px-4 sm:px-6 lg:px-8">
@@ -139,9 +154,9 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="bg-primary-50 mb-20 shadow overflow-hidden sm:rounded-lg">
+      <div className="bg-primary-50 mb-20  p-14 shadow overflow-hidden sm:rounded-lg">
         <div className="border-b border-gray-200 px-4 py-5 sm:px-6">
-          <h3 className="text-lg leading-6 font-medium text-primary-500">
+          <h3 className=" text-3xl leading-8 font-extrabold tracking-tight text-primary-500 text-shadow-gray">
             Frequently Asked Questions
           </h3>
           <p className="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
@@ -258,9 +273,44 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <div className="flex bg-primary-50 p-24 w-full justify-center items-center">
+        <div className="bg-gray-100 py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="lg:text-center">
+              <h2 className="text-base text-primary-500 font-semibold tracking-wide uppercase">
+                Roadmap
+              </h2>
+              <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-primary-500 sm:text-4xl">
+                Our Future Plans
+              </p>
+            </div>
 
-      <div className="flex justify-center mb-10 items-center w-full bg-primary-50">
-        <img src={ether} />
+            <div className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-3">
+              {plans.map((plan) => (
+                <div
+                  key={plan.id}
+                  className="relative p-8 bg-white shadow-lg rounded-md"
+                >
+                  <div className="flex items-center">
+                    <div className="flex-shrink-0">
+                      <div className="flex items-center justify-center h-12 w-12 rounded-md bg-primary-500 text-white">
+                        {plan.title}
+                      </div>
+                    </div>
+                    <div className="ml-4">
+                      <h3 className="text-lg leading-6 font-medium text-gray-900">
+                        {plan.content}
+                      </h3>
+                    </div>
+                  </div>
+                  <div className="mt-6 text-gray-500">
+                    <p className="text-base">{plan.detail}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   );
