@@ -40,11 +40,11 @@ const Home = () => {
         <h1 className="text-primary-500 text-5xl mb-20 leading-9 font-extrabold  sm:leading-10">
           Problem
         </h1>
-        <h1 className="text-primary-500 text-xl mb-20 leading-9 font-extrabold sm:text-4xl sm:leading-10">
+        <h1 className="text-gray-500 text-xl mb-20 leading-9 font-extrabold sm:text-4xl sm:leading-10">
           현재 선물시장의 문제점
         </h1>
         <div className="flex flex-row ">
-          <div className="flex justify-center items-center flex-col ">
+          <div className="flex items-center flex-col m-16">
             <AiFillCloseCircle className="text-primary-500 text-5xl mb-3" />
             <h2 className="text-primary-700">problem1</h2>
             <p className="text-primary-900 w-28">
@@ -52,14 +52,14 @@ const Home = () => {
               한다.
             </p>
           </div>
-          <div className="flex justify-center items-center flex-col ">
+          <div className="flex  items-center flex-col m-16">
             <CgDanger className="text-primary-500 text-5xl mb-3" />
             <h2 className="text-primary-700">problem1</h2>
             <p className="text-primary-900 w-28">
               비주류의 높은 가격변동성에 포지션이 노출되어 버린다는 문제가 있다.
             </p>
           </div>
-          <div className="flex justify-center items-center flex-col ">
+          <div className="flex  items-center flex-col m-16 ">
             <SiHiveBlockchain className="text-primary-500 text-5xl mb-3" />
             <h2 className="text-primary-700">problem1</h2>
             <p className="text-primary-900 w-28">
@@ -161,6 +161,21 @@ const Home = () => {
               </dt>
               <dd className="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
                 Yes! We offer free shipping on all orders over $50.
+              </dd>
+            </div>
+
+            <div className="bg-primary-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <dt className="text-sm leading-5 font-medium text-gray-500">
+                How long will it take to receive my order?
+              </dt>
+              <dd className="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+                nec nisi mauris. Sed ac enim aliquet, faucibus diam at,
+                pellentesque tortor. In hac habitasse platea dictumst. Nullam id
+                sem vel nunc pulvinar vulputate at quis massa. Donec consequat
+                libero nec elit auctor, ac faucibus sapien varius. Praesent
+                vitae ante non dolor faucibus fermentum vel quis eros. Fusce in
+                sapien magna.
               </dd>
             </div>
 

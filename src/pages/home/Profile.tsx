@@ -9,7 +9,7 @@ const Profile = ({ img, role, name }: ProfileProps) => {
     <div className="flex flex-row items-center">
       <img src={img} className="w-20 h-20 rounded-full" />
       <div>
-        <h2 className="text-base text-primary-400 font-semibold tracking-wide uppercase">
+        <h2 className="text-base ml-2 text-primary-400 font-semibold tracking-wide uppercase">
           {role}
         </h2>
         <p>{name}</p>
