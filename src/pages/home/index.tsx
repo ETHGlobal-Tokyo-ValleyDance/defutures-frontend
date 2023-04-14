@@ -4,6 +4,10 @@ import home3 from "../../assets/home/home3.png";
 import home4 from "../../assets/home/home4.png";
 import home5 from "../../assets/home/home5.png";
 import ether from "../../assets/home/ether.png";
+import jiho from "../../assets/home/jiho.png";
+import jihwan from "../../assets/home/jihwan.jpeg";
+import suha from "../../assets/home/suha.png";
+import sooyoung from "../../assets/home/sooyoung.png";
 import Profile from "./Profile";
 import { Link } from "react-router-dom";
 import { AiFillCloseCircle } from "react-icons/ai";
@@ -203,13 +207,38 @@ const Home = () => {
               </div>
             </div>
             <div className="flex items-center justify-between mt-10">
-              <Profile img={home1} role={"FrontEnd Dev"} name={"홍길동"} />
-              <Profile img={home1} role={"FrontEnd Dev"} name={"홍길동"} />
-              <Profile img={home1} role={"FrontEnd Dev"} name={"홍길동"} />
+              <Profile
+                img={jiho}
+                role={"FrontEnd Dev"}
+                name={"JiHo Lee"}
+                link={"https://github.com/mangming2"}
+              />
+              <Profile
+                img={sooyoung}
+                role={"Project Manage"}
+                name={"홍길동"}
+                link={"https://github.com/swimmiee"}
+              />
+              <Profile
+                img={home1}
+                role={"BackEnd Dev"}
+                name={"구자경"}
+                link={"https://github.com/lawkelvin33"}
+              />
             </div>
             <div className="flex mt-10 justify-around">
-              <Profile img={home1} role={"FrontEnd Dev"} name={"홍길동"} />
-              <Profile img={home1} role={"FrontEnd Dev"} name={"홍길동"} />
+              <Profile
+                img={suha}
+                role={"Contract Dev"}
+                name={"홍길동"}
+                link={"https://github.com/djm07073"}
+              />
+              <Profile
+                img={jihwan}
+                role={"Contract Dev"}
+                name={"홍길동"}
+                link={"https://github.com/winterjihwan"}
+              />
             </div>
           </div>
         </div>
