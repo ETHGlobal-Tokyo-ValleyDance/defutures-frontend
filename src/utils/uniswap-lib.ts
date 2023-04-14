@@ -29,5 +29,5 @@ export const getStrikeAmount = (
 ) => {
   return getAmountIn(amountOut.mul(2), leadingIn, leadingOut).sub(
     getAmountIn(amountOut, leadingIn, leadingOut)
-  );
+  ).mul(1000).div(997);
 };

@@ -2,18 +2,72 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  font-family: "Pretendard";
+}
+
 .btn {
-  @apply focus:ring-2 focus:outline-none font-medium rounded-lg px-5 py-2.5 text-center;
+  @apply focus:ring-2 focus:outline-none font-medium rounded-lg px-5 py-2.5 text-center disabled:opacity-70;
 }
 .btn-lg {
   @apply focus:ring-2 focus:outline-none font-medium rounded-lg text-lg px-6 py-3 text-center;
 }
 .btn-primary {
-  @apply text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-purple-200 dark:focus:ring-purple-800;
+  @apply text-white bg-gradient-to-r from-purple-500 to-pink-500 enabled:hover:bg-gradient-to-l enabled:focus:ring-purple-200 enabled:dark:focus:ring-purple-800;
 }
-.btn-disable {
-  @apply text-white bg-gradient-to-r from-slate-500  to-gray-500 hover:bg-gradient-to-l focus:ring-slate-200 dark:focus:ring-gray-800;
+.btn-secondary {
+  @apply text-white bg-neutral-900 focus:bg-neutral-700 disabled:bg-neutral-500;
 }
+.flex-center {
+  @apply flex items-center justify-center;
+}
+
+.shadow {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+.select-wrapper::after {
+  content: "▼";
+  color: #242424;
+  font-size: 12px;
+  top: 9px;
+  right: 10px;
+  position: absolute;
+}
+
+.chip {
+  @apply px-4 py-1 rounded-lg bg-neutral-200;
+}
+
+.chip-sm {
+  @apply px-3 py-[5px] rounded text-xs bg-neutral-200;
+}
+
+.chip-primary {
+  @apply bg-primary-200 text-primary-800;
+}
+.chip-neutral {
+  @apply bg-neutral-200 text-neutral-800;
+}
+.chip-blue {
+  @apply bg-blue-200 text-blue-800;
+}
+.chip-purple {
+  @apply bg-purple-200 text-purple-800;
+}
+
 .text-shadow-gray {
   text-shadow: 2px 2px 2px #ccc;
 }

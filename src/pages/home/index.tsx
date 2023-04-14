@@ -3,7 +3,6 @@ import home2 from "../../assets/home/home2.png";
 import home3 from "../../assets/home/home3.png";
 import home4 from "../../assets/home/home4.png";
 import home5 from "../../assets/home/home5.png";
-import ether from "../../assets/home/ether.png";
 import jiho from "../../assets/home/jiho.png";
 import jihwan from "../../assets/home/jihwan.jpeg";
 import suha from "../../assets/home/suha.png";

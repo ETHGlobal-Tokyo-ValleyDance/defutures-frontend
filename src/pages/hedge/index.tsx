@@ -13,6 +13,8 @@ const Hedge = () => {
     onChangeSpotPercent,
   } = useHedge();
 
+  const disabled = +tolerance < 0
+
   return (
     <div className="flex bg-primary-50 w-[600px] h-[500px] m-auto mt-10 mb-10 items-center justify-center p-8 rounded shadow-xl">
       <div className="flex flex-col w-[400px] ">
@@ -23,16 +25,15 @@ const Hedge = () => {
         <input
           className="mt-4 accent-primary-300 focus:accent-primary-500 border-none bg-primary-700"
           type="range"
-          min="60"
           step={0.1}
-          max={maxSpotPercent}
+          min="60"
+          max="100"
           value={spotPercent}
           onChange={onChangeSpotPercent}
         />
         <div className="flex justify-between">
-          <p>{50}</p>
-          <p>{spotPercent}</p>
-          <p>{maxSpotPercent}</p>
+          <p>60%</p>
+          <p>Max</p>
         </div>
 
         <hr className="my-4" />
@@ -50,7 +51,7 @@ const Hedge = () => {
         </div>
         <div className="mt-2 flex justify-between text-primary-800">
           <p className="font-semibold">Tolerance to volatility</p>
-          <p>{tolerance >= 100 ? ">100" : tolerance}%</p>
+          <p>{tolerance >= 100 ? ">100" : tolerance < 0 ? "<0" : tolerance}%</p>
         </div>
         <div className="mt-2 flex justify-between text-primary-800">
           <p className="font-semibold">Minimum Margin Ratio</p>
