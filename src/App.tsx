@@ -4,6 +4,7 @@ import Home from "pages/home";
 import Hedge from "pages/hedge";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "components/Footer";
+import MyPosition from "pages/my-position";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path={ROUTES.HOME} element={<Home />} />
           <Route path={ROUTES.HEDGE} element={<Hedge />} />
+          <Route path={ROUTES.MY_POSITION} element={<MyPosition />} />
         </Routes>
         <Footer />
       </BrowserRouter>
