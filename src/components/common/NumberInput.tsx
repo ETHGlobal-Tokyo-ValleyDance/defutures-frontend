@@ -1,18 +1,40 @@
 import { ChangeEventHandler } from "react";
+import { cn } from "utils/cn";
 
-interface NumberInputProps
-  extends Omit<React.HTMLAttributes<HTMLInputElement>, "onChange" | "value"> {
-    value: string
-  onChange: (value: string) => void;
+interface NumberInputProps {
+  className?: string;
+  value: string;
+  onChange: (val: string) => void;
+  left?: React.ReactNode | null;
+  right?: React.ReactNode | null;
 }
-export const NumberInput = ({ onChange, ...props }: NumberInputProps) => {
-  const onChangeEvent: ChangeEventHandler<HTMLInputElement> = (e) => {
-    onChange(e.target.value);
+
+export const NumberInput = ({
+  className,
+  value,
+  onChange,
+  left = null,
+  right = null,
+}: NumberInputProps) => {
+  const onChangeValue: ChangeEventHandler<HTMLInputElement> = (e) => {
+    if (!isNaN(+e.target.value)) onChange(e.target.value);
   };
 
   return (
-    <div>
-      <input className="outline-none border px-4 py-2 rounded-md" onChange={onChangeEvent} {...props} />
+    <div
+      className={cn(
+        className,
+        "flex gap-4 items-center justify-between bg-neutral-100 border-neutral-200 border px-4 py-3.5 rounded-md"
+      )}
+    >
+      {left}
+      <input
+        className="outline-none bg-transparent flex-1 text-right text-lg"
+        placeholder="0.0"
+        value={value}
+        onChange={onChangeValue}
+      />
+      {right}
     </div>
   );
 };
