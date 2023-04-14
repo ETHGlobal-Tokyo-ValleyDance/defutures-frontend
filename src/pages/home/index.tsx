@@ -23,9 +23,11 @@ const Home = () => {
           </p>
           <div className="mt-8 flex justify-center">
             <div className="rounded-md shadow">
-              <button>
-              Get started
-              </button>
+              <Link to="/future">
+                <button className="btn-lg btn-primary">
+                Get started
+                </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -116,7 +118,7 @@ const Home = () => {
         <div className="flex flex-row mt-[100px] mb-[100px] w-[700px] h-[216px] bg-primary-400  rounded-2xl">
           <div>
             <h1 className="mt-[36px] ml-[36px] text-2xl font-bold ">
-              Start Mining MNow
+              Start Mining Now
             </h1>
             <p> ldsfasfasdfsd</p>
           </div>
