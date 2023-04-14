@@ -6,6 +6,7 @@ import home5 from "../../assets/home/home5.png";
 import ether from "../../assets/home/ether.png";
 import Profile from "./Profile";
 import { Link } from "react-router-dom";
+import { AiFillCloseCircle } from "react-icons/ai";
 
 const Home = () => {
   return (
@@ -33,13 +34,20 @@ const Home = () => {
         <img src={home1} />
       </div>
 
-      <div>
-        <h1 className="text-primary-500 text-3xl leading-9 font-extrabold sm:text-4xl sm:leading-10">
+      <div className="flex justify-center items-center flex-col">
+        <h1 className="text-primary-500 text-5xl mb-20 leading-9 font-extrabold  sm:leading-10">
           Problem
         </h1>
         <h1 className="text-primary-500 text-xl leading-9 font-extrabold sm:text-4xl sm:leading-10">
           현재 선물시장의 문제점
         </h1>
+        <div className="flex justify-center items-center flex-col">
+          <AiFillCloseCircle className="text-primary-500 text-5xl mb-3" />
+          <h2>problem1</h2>
+          <p>
+            DEX에 투자하여 수익을 얻기 위해서는 2개 이상의 토큰을 예치해야 한다.
+          </p>
+        </div>
       </div>
 
       <div className="flex w-full mt-6  items-center justify-center flex-col">
