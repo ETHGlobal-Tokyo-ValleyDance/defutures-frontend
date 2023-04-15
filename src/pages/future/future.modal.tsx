@@ -82,7 +82,7 @@ export const FutureModal = ({
   };
 
   return (
-    <Modal closeModal={close} title="Buy Future">
+    <Modal closeModal={close} title="Get Future">
       <div className="p-4 pb-6 flex">
         {/* LEFT SIDE */}
         <div className="flex flex-1 flex-col justify-center p-4 pb-8 mr-10">
@@ -108,14 +108,14 @@ export const FutureModal = ({
               step === Step.Buy ? "font-semibold" : "text-neutral-500"
             )}
           >
-            2. Buy Future NFT 🎉
+            2. Get Future NFT 🎉
           </p>
           <StepButton
             onClick={addPosition}
             currentStep={step}
             targetStep={Step.Buy}
           >
-            Buy {shortToken.symbol} → {longToken.symbol}
+            Get {shortToken.symbol} → {longToken.symbol}
           </StepButton>
 
           <div className="flex-center mt-8">

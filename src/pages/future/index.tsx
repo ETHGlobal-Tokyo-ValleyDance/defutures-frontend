@@ -29,7 +29,7 @@ const Future = () => {
   const isDisabled = !shortAmount || isMarginShortage;
 
   return (
-    <div className="px-24 py-12 flex">
+    <div className="px-24 py-8 flex">
       <div className="px-10 py-6 flex flex-col flex-[2] border-r border-r-neutral-200">
         {/* LONG TOKEN */}
         <p className="font-bold text-xl">Long Position</p>
