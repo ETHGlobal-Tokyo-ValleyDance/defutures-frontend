@@ -56,6 +56,7 @@ export const useConnectWallet = () => {
 
 export const useSigner = () => {
   const account = useRecoilValue(accountAtom);
-  if (!account) return null;
-  return new providers.Web3Provider(window.ethereum).getSigner();
+  if (!account || !window.ethereum) return null;
+  // @ts-ignore
+  return new providers.Web3Provider(window.ethereum!).getSigner();
 };
