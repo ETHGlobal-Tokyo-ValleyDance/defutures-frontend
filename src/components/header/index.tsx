@@ -7,6 +7,10 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const { account, chainId, connect, disconnect } = useConnectWallet();
 
+  const onDisconnect = () => {
+    if(confirm("Disconnect Wallet?")) disconnect();
+  }
+
   return (
     <header className="border-b border-b-neutral-300 flex flex-col">
       <div className="h-[75px] px-40 flex justify-between items-center">
@@ -15,7 +19,7 @@ const Header = () => {
         </Link>
 
         {account ? (
-          <button className="btn btn-secondary" onClick={disconnect}>
+          <button className="btn btn-secondary" onClick={onDisconnect}>
             {ellipsisAddress(account)}
           </button>
         ) : (
