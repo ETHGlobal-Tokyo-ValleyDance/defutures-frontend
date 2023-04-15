@@ -32,14 +32,15 @@ const Home = () => {
   return (
     <main className="flex flex-col justify-center items-center">
       <div className="flex justify-center max-w-screen-lg mx-auto py-20 px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center w-max">
+        <div className="flex flex-col">
           <h1 className="text-primary-500 text-shadow-gray text-3xl leading-9 font-extrabold sm:text-4xl sm:leading-10">
-            Fully Decentralized <br />
-            Futures Trading <br />
-            in crypto
+          Introducing Defutures:
           </h1>
-          <p className="mt-3 text-xl leading-7 text-gray-500 sm:mt-4">
-            You can reduce uncertain risks and earn high returns.
+          <p className="mt-3 text-xl text-gray-500 sm:mt-4">
+            Revolutionize your Web3 investments with our 100% decentralized
+            futures market on the Ethereum Virtual Machine (EVM).
+            <br />
+            Defutures effectively resolves the pressing issue of diminishing position values in existing DeFi platforms, caused by the volatility of paired tokens. By enabling users to open hedging future positions, Defutures presents a comprehensive and reliable solution to mitigate this problem.
           </p>
           <div className="mt-8 flex justify-center">
             <div className="rounded-md shadow">
@@ -50,7 +51,7 @@ const Home = () => {
           </div>
         </div>
 
-        <img className=" animate-pulse duration-1000" src={home1} />
+        <img className=" w-[360px] animate-pulse duration-1000" src={home1} />
       </div>
 
       <div className="flex w-full p-10 bg-primary-100 justify-center items-center flex-col">

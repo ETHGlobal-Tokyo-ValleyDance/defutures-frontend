@@ -24,7 +24,7 @@ export const NumberInput = ({
     <div
       className={cn(
         className,
-        "flex gap-4 shadow-lg items-center justify-between bg-neutral-100 border-neutral-200 border px-4 py-3.5 rounded-md"
+        "flex gap-4 shadow-lg items-center justify-between bg-neutral-100 border-neutral-200 border px-4 py-[11px] rounded-md"
       )}
     >
       {left}
