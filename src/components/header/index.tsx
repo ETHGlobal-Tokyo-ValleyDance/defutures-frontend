@@ -12,7 +12,7 @@ const Header = () => {
       <div className="h-[75px] px-40 flex justify-between items-center">
         <Link to={ROUTES.HOME}>
           <p className="font-extrabold text-2xl text-primary-500">
-            Valley Finance
+            DeFutures
           </p>
         </Link>
 

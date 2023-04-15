@@ -1,11 +1,14 @@
 import { TokenSelector } from "components/common/TokenSelector";
 import { useHedge } from "./hedge.service";
 import { NumberInput } from "components/common/NumberInput";
+import { cn } from "utils";
 
+const MIN_SPOT_PERCENT = 60;
 const Hedge = () => {
   const {
     totalAmount,
     spotPercent,
+    spotAmount,
     maxSpotPercent,
     marginRatio,
     tolerance,
@@ -18,15 +21,16 @@ const Hedge = () => {
     setFarmSymbol,
     setTotalAmount,
     onChangeSpotPercent,
-  } = useHedge();
+  } = useHedge(MIN_SPOT_PERCENT);
 
   const disabled = +tolerance < 0;
   const baseTokenBalance = 0;
+  // TODO
+  const dexName = "Uniswap V2";
 
   return (
     <div className="px-24 py-12 flex">
       <div className="px-10 py-6 flex flex-col flex-[2] border-r border-r-neutral-200">
-
         {/* DESCRIPTION */}
         <div className=" bg-primary-50 p-5 rounded-lg">
           <p className="leading-[22px]">
@@ -39,7 +43,9 @@ const Hedge = () => {
           </p>
         </div>
 
-        <p className="font-bold text-xl mt-6">Select a token to invest in DEX.</p>
+        <p className="font-bold text-xl mt-6">
+          Select a token to invest in DEX.
+        </p>
         <hr className="mt-2" />
         <div className="flex my-4">
           <TokenSelector
@@ -101,17 +107,88 @@ const Hedge = () => {
 
           <hr className="my-4" />
 
+          <label
+            htmlFor="spot-range"
+            className="block mb-2 text-lg font-semibold text-gray-900 dark:text-white"
+          >
+            Spot - Hedge Ratio
+          </label>
+          <div className="flex justify-between mb-3">
+            <div className="chip-sm chip-purple">{MIN_SPOT_PERCENT}%</div>
+            <div className="chip-sm chip-purple">100%</div>
+          </div>
           <input
-            className="mt-4 accent-primary-300 focus:accent-primary-500 border-none bg-primary-700"
+            id="spot-range"
+            className="rounded-lg overflow-hidden appearance-none bg-primary-100 h-3 w-128"
             type="range"
             step={0.1}
-            min="60"
+            min={MIN_SPOT_PERCENT}
             max="100"
             value={spotPercent}
             onChange={onChangeSpotPercent}
           />
-        </div>
 
+          {/* INFOS */}
+          <div className=" bg-primary-50 p-5 rounded-lg my-4">
+            <p className="leading-[26px] text-lg">
+              Your investment funds of
+              <b className="text-primary-700"> {totalAmount} USDC </b>
+              will be divided as follows:
+              <br />•{" "}
+              <b className="text-primary-700">
+                {spotAmount} {baseToken.symbol}{" "}
+              </b>
+              will be allocated to {dexName}
+              <br />• remaining{" "}
+              <b className="text-primary-700">
+                {(1000 * +totalAmount - spotAmount * 1000) / 1000}{" "}
+                {baseToken.symbol}
+              </b>{" "}
+              will be invested in futures for hedging position.
+            </p>
+          </div>
+
+          <hr className="my-4" />
+          {/* RECEIPT PREVIEW */}
+          <div className="flex flex-col gap-y-1.5">
+            {/* MARGIN RATIO */}
+            <div className={cn("flex flex-1 gap-4", marginRatio < minMarginBps / 100 && "text-red-600")}>
+              <div className="flex flex-1 justify-between">
+                <p className="font-semibold">Current Margin Ratio</p>
+                <p> {marginRatio}%</p>
+              </div>
+              <p>:</p>
+              <p className="flex-1 text-neutral-500">
+                Your {farmToken.symbol} equity compared to strike amount
+              </p>
+            </div>
+
+            {/* MINIMUM MARGIN RATIO */}
+            <div className="flex flex-1 gap-4">
+              <div className="flex flex-1 justify-between">
+                <p className="font-semibold">Minimum Margin Ratio</p>
+                <p> {minMarginBps / 100}%</p>
+              </div>
+              <p>:</p>
+              <p className="flex-1 text-neutral-500">
+                Min margin ratio required to maintain position.
+              </p>
+            </div>
+
+            {/* TOLERANCE */}
+            <div className="flex flex-1 gap-4">
+              <div className="flex flex-1 justify-between">
+                <p className="font-semibold">Tolerance</p>
+                <p> {tolerance >= 100 || tolerance < 0 ? "-" : tolerance}%</p>
+              </div>
+              <p>:</p>
+              <p className="flex-1 text-neutral-500">
+                The volatility of price fluctuations between paired tokens that
+                can be tolerated.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

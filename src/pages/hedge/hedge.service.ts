@@ -32,16 +32,14 @@ interface HedgeInfo {
 
 // base token: user asset
 // farm token: swapped asset for invest position
-export const useHedge = () => {
+export const useHedge = (minSpotPerc: number) => {
   // TODO: chainId
   const chainId = CHAINID.LOCAL;
   const tokenList = Token.fromChain(chainId);
 
-  
-  
   // Defuture & UniswapPair Infos (reserve0,1, leading0,1 ...)
   const [hedgeInfo, setHedgeInfo] = useState<HedgeInfo | null>(null);
-  
+
   /** USER INPUTS **/
   const [baseSymbol, setBaseSymbol] = useState("USDC");
   const [farmSymbol, setFarmSymbol] = useState("DOGE");
@@ -49,11 +47,11 @@ export const useHedge = () => {
   // totalAmount of user input base token
   const [totalAmount, setTotalAmount] = useState<string>("1");
   // spotAmount / totalAmount, user can choose using slider input
-  const [spotPercent, setSpotPercent] = useState<string>("60");
+  const [spotPercent, setSpotPercent] = useState<string>(minSpotPerc + "");
 
   /** Calculated Amounts */
   // minHedgeAmount only depends on totalAmount
-  const minHedgeAmount:number = useMemo(() => {
+  const minHedgeAmount: number = useMemo(() => {
     if (!hedgeInfo || !+spotPercent || !+totalAmount) return 0;
     // minHedge / (tot/2 - minHedge) = minMarginBps / 1E4
     // -> minHedge = minMarginBps * total / (2E4 + minMarginBps)
@@ -64,8 +62,9 @@ export const useHedge = () => {
     );
   }, [hedgeInfo?.updatedAt, totalAmount]);
 
-  const [marginRatio, tolerance] = useMemo(() => {
-    if (!hedgeInfo || !+spotPercent || !+totalAmount) return [0, 0];
+  const { marginRatio, tolerance, spotAmount } = useMemo(() => {
+    if (!hedgeInfo || !+spotPercent || !+totalAmount)
+      return { marginRatio: 0, tolerance: 0, spotAmount: 0 };
 
     const total = parseEther(totalAmount);
 
@@ -76,7 +75,6 @@ export const useHedge = () => {
       .div(1e3);
     const hedgeAmount = total.sub(spotAmount);
 
-
     // swap (spot)/2 + hedge from base(long token) to farm(short token)
     const baseAmountToSwap = spotAmount.div(2).add(hedgeAmount);
 
@@ -85,7 +83,7 @@ export const useHedge = () => {
       hedgeInfo.reserveBase,
       hedgeInfo.reserveFarm
     );
-    
+
     const hedgeQuote = swappedFarm.mul(hedgeAmount).div(baseAmountToSwap);
 
     // Get strike amount with respect to current Future market price (leading0, leading1)
@@ -94,12 +92,12 @@ export const useHedge = () => {
     const strikeAmount = getStrikeAmount(
       spotAmount.div(2),
       hedgeInfo.leadingFarm,
-      hedgeInfo.leadingBase,
+      hedgeInfo.leadingBase
     );
-    console.log("strikeAmount",  formatEther(strikeAmount))
-    console.log("futureAmount",  formatEther(spotAmount.div(2)))
+    console.log("strikeAmount", formatEther(strikeAmount));
+    console.log("futureAmount", formatEther(spotAmount.div(2)));
 
-    const _marginRatio = hedgeQuote.mul(1e4).div(strikeAmount).toNumber() / 100;
+    const marginRatio = hedgeQuote.mul(1e4).div(strikeAmount).toNumber() / 100;
 
     // when futurePrice(=current strike price) meets liquidatedPoint,
     // this position will be automatically liquidated.
@@ -108,10 +106,10 @@ export const useHedge = () => {
       .mul(1e4)
       .div(1e4 - hedgeInfo.minMarginBps);
 
-    const _tolerance =
+    const tolerance =
       (strikeAmount.mul(1e4).div(liquidatedPoint).toNumber() - 10000) / 100;
 
-    return [_marginRatio, _tolerance];
+    return { marginRatio, tolerance, spotAmount: +formatEther(spotAmount.mul(1E3)) / 1000 };
   }, [hedgeInfo?.updatedAt, totalAmount, spotPercent]);
 
   const [baseToken, farmToken]: [Token, Token] = useMemo(() => {
@@ -131,12 +129,14 @@ export const useHedge = () => {
     setSpotPercent(value);
   };
 
-  const maxSpotPercent = 100 - Math.floor(1E4 * minHedgeAmount / +totalAmount) / 100;
+  const maxSpotPercent =
+    100 - Math.floor((1e4 * minHedgeAmount) / +totalAmount) / 100;
 
   return {
     tokenList,
     totalAmount,
     spotPercent,
+    spotAmount,
     maxSpotPercent,
     minHedgeAmount,
     marginRatio,

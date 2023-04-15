@@ -84,13 +84,11 @@ const Future = () => {
           <div className="flex justify-between items-center">
             <div className="flex items-center">
               <span className="chip chip-blue">Sell</span>
-              <p className="text-2xl mx-3 font-semibold">{shortToken.symbol}</p>
-            </div>
-
-            <span className="text-2xl font-bold">&#8594;</span>
-
-            <div className="flex items-center">
-              <p className="text-2xl mx-3 font-semibold">{longToken.symbol}</p>
+              <p className="text-2xl mx-3 pt-0.5 font-semibold">
+                {shortToken.symbol}
+                {" "}&#8594;{" "}
+                {longToken.symbol}
+              </p>
               <span className="chip chip-primary">Buy</span>
             </div>
           </div>
