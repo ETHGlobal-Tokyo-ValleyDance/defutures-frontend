@@ -34,7 +34,7 @@ interface HedgeInfo {
 // farm token: swapped asset for invest position
 export const useHedge = (minSpotPerc: number) => {
   // TODO: chainId
-  const chainId = CHAINID.LOCAL;
+  const chainId = CHAINID.Baobab;
   const tokenList = Token.fromChain(chainId);
 
   // Defuture & UniswapPair Infos (reserve0,1, leading0,1 ...)

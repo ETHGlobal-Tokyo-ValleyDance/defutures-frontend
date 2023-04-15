@@ -5,6 +5,7 @@ import {
   useResetRecoilState,
 } from "recoil";
 import { connectMetamask } from "../utils/metamask";
+import { CHAINID } from "interfaces/config-data.interface";
 
 export const accountAtom = atom<string | null>({
   key: "atom/account",
@@ -14,7 +15,7 @@ export const accountAtom = atom<string | null>({
 export const chainIdAtom = atom<number>({
   key: "atom/chainId",
   // TODO: CHANGE DEFAULT CHAIN ID
-  default: 1,
+  default: CHAINID.Baobab,
 });
 
 export const useWallet = () => {
