@@ -114,8 +114,8 @@ const Hedge = () => {
             Spot - Hedge Ratio
           </label>
           <div className="flex justify-between mb-3">
-            <div className="chip-sm chip-purple">{MIN_SPOT_PERCENT}%</div>
-            <div className="chip-sm chip-purple">100%</div>
+            <div className="chip-sm chip-purple">Min {MIN_SPOT_PERCENT}%</div>
+            <div className="chip-sm chip-purple">Max 100%</div>
           </div>
           <input
             id="spot-range"
@@ -129,7 +129,7 @@ const Hedge = () => {
           />
 
           {/* INFOS */}
-          <div className=" bg-primary-50 p-5 rounded-lg my-4">
+          <div className=" bg-primary-50 p-4 rounded-lg my-3">
             <p className="leading-[26px] text-lg">
               Your investment funds of
               <b className="text-primary-700"> {totalAmount} USDC </b>
@@ -148,11 +148,16 @@ const Hedge = () => {
             </p>
           </div>
 
-          <hr className="my-4" />
+          <hr className="my-3" />
           {/* RECEIPT PREVIEW */}
           <div className="flex flex-col gap-y-1.5">
             {/* MARGIN RATIO */}
-            <div className={cn("flex flex-1 gap-4", marginRatio < minMarginBps / 100 && "text-red-600")}>
+            <div
+              className={cn(
+                "flex flex-1 gap-4",
+                marginRatio < minMarginBps / 100 && "text-red-600"
+              )}
+            >
               <div className="flex flex-1 justify-between">
                 <p className="font-semibold">Current Margin Ratio</p>
                 <p> {marginRatio}%</p>
@@ -187,6 +192,26 @@ const Hedge = () => {
                 can be tolerated.
               </p>
             </div>
+          </div>
+
+          {/* WARNING */}
+          <div className=" bg-yellow-50 p-4 rounded-lg my-4">
+            <p>
+              Investing a small percentage of funds in position hedging{" "}
+              <b className="text-yellow-800">
+                may expose the position to liquidation risk
+              </b>{" "}
+              even with minor price fluctuations, while{" "}
+              <b className="text-yellow-800">
+                overinvesting in hedging may limit potential returns.
+              </b>
+            </p>
+          </div>
+
+          <div className="flex-1 mt-2 flex-center">
+            <button className="btn-lg btn-primary">
+              Start to invest Hedged position 🎉
+            </button>
           </div>
         </div>
       </div>
