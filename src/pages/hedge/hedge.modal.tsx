@@ -1,23 +1,23 @@
 import Modal from "components/common/Modal";
-import { useFuture } from "./future.service";
+import { useHedge } from "./hedge.service";
 import { useState } from "react";
 import { cn } from "utils";
 import { Step, StepButton } from "components/common/StepButton";
-import { ethers } from "ethers";
 import { parseEther } from "ethers/lib/utils";
 import { useSigner } from "states/wallet.state";
 
-interface FutureModalProps {
+interface HedgeModalProps {
   close: () => void;
-  futures: ReturnType<typeof useFuture>;
+  hedges: ReturnType<typeof useHedge>;
 }
 
-export const FutureModal = ({
+export const HedgeModal = ({
   close,
-  futures: { shortToken, longToken, margin, totalSupply, longAmount },
-}: FutureModalProps) => {
-  const [step, setStep] = useState<Step>(Step.Approve);
+  hedges: { totalSupply, baseToken, farmToken, totalAmount, spotPercent },
+}: HedgeModalProps) => {
   const signer = useSigner();
+  const total = parseEther(totalAmount);
+  const [step, setStep] = useState<Step>(Step.Approve);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const approve = async () => {
@@ -25,11 +25,10 @@ export const FutureModal = ({
     try {
       setIsLoading(true);
 
-      // TODO: SIGNER
-      const tx = await shortToken
+      const tx = await farmToken
         .getContract()
         .connect(signer)
-        .approve(shortToken.getChain().defuture.router, parseEther(margin));
+        .approve(farmToken.getChain().defuture.router, total);
       await tx.wait();
       setStep(Step.Buy);
     } catch {
@@ -42,20 +41,20 @@ export const FutureModal = ({
     if (step !== Step.Buy || !signer) return;
     try {
       setIsLoading(false);
+      const spot = total.mul(Math.floor(+spotPercent * 10)).div(1e3);
 
-      // TODO: SIGNER
-      const tx = await shortToken
+      const tx = await farmToken
         .getChain()
         .getV2DefutureRouter()
         .connect(signer)
-        .addPosition(
-          longToken.address,
-          shortToken.address,
+        .addLiquidityHedged(
+          baseToken.address,
+          farmToken.address,
           signer._address,
-          longToken.parse(longAmount),
-          shortToken.parse(margin),
-          ethers.constants.MaxUint256
+          spot,
+          total.sub(spot)
         );
+
       await tx.wait();
       setStep(Step.Done);
     } catch {
@@ -87,7 +86,7 @@ export const FutureModal = ({
             currentStep={step}
             targetStep={Step.Approve}
           >
-            Approve {shortToken.symbol}
+            Approve {baseToken.symbol}
           </StepButton>
 
           <p
@@ -103,7 +102,7 @@ export const FutureModal = ({
             currentStep={step}
             targetStep={Step.Buy}
           >
-            Buy {shortToken.symbol} → {longToken.symbol}
+            Open {baseToken.symbol} Hedge Position
           </StepButton>
 
           <div className="flex-center mt-8">

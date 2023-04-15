@@ -6,6 +6,7 @@ import {
 } from "recoil";
 import { connectMetamask } from "../utils/metamask";
 import { CHAINID } from "interfaces/config-data.interface";
+import { providers } from "ethers";
 
 export const accountAtom = atom<string | null>({
   key: "atom/account",
@@ -51,4 +52,10 @@ export const useConnectWallet = () => {
     connect,
     disconnect,
   };
+};
+
+export const useSigner = () => {
+  const account = useRecoilValue(accountAtom);
+  if (!account) return null;
+  return new providers.Web3Provider(window.ethereum).getSigner();
 };
