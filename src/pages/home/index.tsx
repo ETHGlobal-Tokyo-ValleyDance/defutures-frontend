@@ -37,7 +37,7 @@ const Home = () => {
           <h1 className="text-primary-500 text-shadow-gray text-3xl leading-9 font-extrabold sm:text-4xl sm:leading-10">
             Introducing Defutures:
           </h1>
-          <p className="mt-3 text-xl text-gray-500 sm:mt-4">
+          <p className="mt-3 text-l text-gray-500 sm:mt-4">
             Revolutionize your Web3 investments with our 100% decentralized
             futures market on the Ethereum Virtual Machine (EVM).
             <br />
@@ -69,32 +69,36 @@ const Home = () => {
         <div className="flex flex-row ">
           <div className="flex items-center flex-col m-16">
             <AiFillCloseCircle className="text-primary-500 text-5xl mb-3" />
-            <h2 className="text-primary-700 mb-6"> 구린 진입성</h2>
+            <h2 className="text-primary-700 mb-6 text-xl font-bold">
+              {" "}
+              Poor Accessibility
+            </h2>
             <div className=" text-center text-gray-600 w-48">
-              블록체인 선물시장에서는 투자자들이 자신의 포지션을 헷징하기 위해
-              복잡한 전략을 사용해야 하는 경우가 많습니다. 이는 새로운
-              투자자들이 시장에 진입하기 어렵게 만들어 불안정성을 야기할 수
-              있습니다.
+              In the blockchain gift market, investors often have to use complex
+              strategies to hedge their positions, which can make it difficult
+              for new investors to enter the market and cause instability.
             </div>
           </div>
           <div className="flex  items-center flex-col m-16">
             <CgDanger className="text-primary-500 text-5xl mb-3" />
-            <h2 className="text-primary-700 mb-6">위험성</h2>
-            <div className=" text-center text-primary-900 w-48">
-              블록체인 선물시장에서는 투자자들이 자신의 포지션을 헷징하기 위해
-              복잡한 전략을 사용해야 하는 경우가 많습니다. 이는 새로운
-              투자자들이 시장에 진입하기 어렵게 만들어 불안정성을 야기할 수
-              있습니다.
+            <h2 className="text-primary-700 mb-6 text-xl font-bold">Risk</h2>
+            <div className=" text-center text-gray-600 w-48">
+              Users who invest in DEX in order to achieve high returns must
+              invest in a pool of mainstream and non-mainstream tokens. However,
+              if they invest in this pool, they are exposed to the high price
+              volatility of non-mainstream tokens, which can pose a problem for
+              their position.
             </div>
           </div>
           <div className="flex  items-center flex-col m-16 ">
             <SiHiveBlockchain className="text-primary-500 text-5xl mb-3" />
-            <h2 className="text-primary-700 mb-6">애매한 탈중앙화</h2>
-            <div className=" text-center text-primary-900 w-48">
-              블록체인 선물시장에서는 투자자들이 자신의 포지션을 헷징하기 위해
-              복잡한 전략을 사용해야 하는 경우가 많습니다. 이는 새로운
-              투자자들이 시장에 진입하기 어렵게 만들어 불안정성을 야기할 수
-              있습니다.
+            <h2 className="text-primary-700 mb-6 text-xl font-bold">
+              Not fully decentralized
+            </h2>
+            <div className=" text-center text-gray-600 w-48">
+              As most of the services supporting futures markets currently use
+              order book systems, it cannot be considered a fully decentralized
+              approach, hence it is not 100% decentralized.
             </div>
           </div>
         </div>
@@ -173,44 +177,47 @@ const Home = () => {
           <dl>
             <div className="bg-primary-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm leading-5 font-medium text-gray-500">
-                선물 계약의 기간은 얼마나 됩니까?
+                What is the duration of a futures contract?
               </dt>
               <dd className="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                선물 계약의 기간은 유동적으로 조절 가능합니다. 기간은 사용자가
-                원하는 만큼 설정할 수 있으며, 일반적으로 1주부터 6개월까지의
-                기간을 사용합니다.
+                The duration of a futures contract can be adjusted flexibly.
+                Users can set the duration as they wish, and typically use a
+                period ranging from one week to six months.
               </dd>
             </div>
 
             <div className="bg-primary-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm leading-5 font-medium text-gray-500">
-                선물 계약의 가격은 어떻게 결정됩니까?
+                How are the fees for a futures contract calculated?
               </dt>
               <dd className="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                선물 계약의 가격은 시장에서의 현재 가격, 거래량, 시장 예측 등
-                여러 요인을 고려하여 결정됩니다. 이를 통해 시장에 대한 신뢰성을
-                높이고 사용자들의 이익을 극대화할 수 있습니다.
+                The fees for a futures contract vary depending on the futures
+                exchange. Our service keeps fees low, and strives to enable
+                users to conclude futures contracts cheaply.
               </dd>
             </div>
 
             <div className="bg-primary-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm leading-5 font-medium text-gray-500">
-                선물 계약의 수수료는 어떻게 책정됩니까?
+                How is the price of a futures contract determined?
               </dt>
               <dd className="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                선물 계약의 수수료는 선물 거래소에 따라 다릅니다. 우리 서비스는
-                수수료를 낮게 유지하며, 사용자들이 저렴하게 선물 계약을 체결할
-                수 있도록 노력하고 있습니다.
+                The price of a futures contract is determined by considering
+                various factors such as the current market price, trading
+                volume, and market predictions. This helps increase reliability
+                in the market and maximize user benefits.
               </dd>
             </div>
 
             <div className="bg-primary-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm leading-5 font-medium text-gray-500">
-                어떤 암호화폐가 대상이 되는 것인가요?
+                Which cryptocurrencies are included as the subject of futures
+                contracts?
               </dt>
               <dd className="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                우리 서비스에서는 다양한 암호화폐가 대상이 됩니다. 사용자들은
-                원하는 암호화폐를 선택하여 선물 계약을 체결할 수 있습니다.
+                Various cryptocurrencies are targeted on our service. Users can
+                choose the cryptocurrency they want and conclude a futures
+                contract.
               </dd>
             </div>
           </dl>
