@@ -3,10 +3,10 @@ import home2 from "../../assets/home/home2.png";
 import home3 from "../../assets/home/home3.png";
 import home4 from "../../assets/home/home4.png";
 import home5 from "../../assets/home/home5.png";
-import jiho from "../../assets/home/jiho.png";
-import jihwan from "../../assets/home/jihwan.jpeg";
-import suha from "../../assets/home/suha.png";
-import sooyoung from "../../assets/home/sooyoung.png";
+import jiho from "../../assets/home/profile/jiho.png";
+import jihwan from "../../assets/home/profile/jihwan.jpeg";
+import suha from "../../assets/home/profile/suha.jpeg";
+import sooyoung from "../../assets/home/profile/sooyoung.jpeg";
 import Profile from "./Profile";
 import { Link } from "react-router-dom";
 import { AiFillCloseCircle } from "react-icons/ai";
@@ -34,13 +34,17 @@ const Home = () => {
       <div className="flex justify-center max-w-screen-lg mx-auto py-20 px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col">
           <h1 className="text-primary-500 text-shadow-gray text-3xl leading-9 font-extrabold sm:text-4xl sm:leading-10">
-          Introducing Defutures:
+            Introducing Defutures:
           </h1>
           <p className="mt-3 text-xl text-gray-500 sm:mt-4">
             Revolutionize your Web3 investments with our 100% decentralized
             futures market on the Ethereum Virtual Machine (EVM).
             <br />
-            Defutures effectively resolves the pressing issue of diminishing position values in existing DeFi platforms, caused by the volatility of paired tokens. By enabling users to open hedging future positions, Defutures presents a comprehensive and reliable solution to mitigate this problem.
+            Defutures effectively resolves the pressing issue of diminishing
+            position values in existing DeFi platforms, caused by the volatility
+            of paired tokens. By enabling users to open hedging future
+            positions, Defutures presents a comprehensive and reliable solution
+            to mitigate this problem.
           </p>
           <div className="mt-8 flex justify-center">
             <div className="rounded-md shadow">
@@ -213,7 +217,7 @@ const Home = () => {
       </div>
 
       <div className="flex w-full p-6">
-        <div className="flex w-full p-10  justify-center items-center flex-col">
+        <div className="flex w-full p-8  justify-center items-center flex-col">
           <div className="lg:text-center">
             <div className="flex">
               <img src={home2} />
@@ -238,36 +242,37 @@ const Home = () => {
             </div>
             <div className="flex items-center justify-between mt-24">
               <Profile
+                img={suha}
+                role={"Contract Dev"}
+                name={"Suha Jin"}
+                link={"https://github.com/djm07073"}
+              />
+              <Profile
+                img={sooyoung}
+                role={"Project Manager"}
+                name={"Sooyoung Lee"}
+                link={"https://github.com/swimmiee"}
+              />
+              <Profile
+                img={jihwan}
+                role={"Contract Dev"}
+                name={"Jihwan An"}
+                link={"https://github.com/winterjihwan"}
+              />
+            </div>
+            <div className="flex mt-10 justify-around">
+              <Profile
                 img={jiho}
                 role={"FrontEnd Dev"}
                 name={"JiHo Lee"}
                 link={"https://github.com/mangming2"}
               />
-              <Profile
-                img={sooyoung}
-                role={"Project Manage"}
-                name={"홍길동"}
-                link={"https://github.com/swimmiee"}
-              />
+
               <Profile
                 img={home1}
                 role={"BackEnd Dev"}
-                name={"구자경"}
+                name={"Jakyung Koo"}
                 link={"https://github.com/lawkelvin33"}
-              />
-            </div>
-            <div className="flex mt-10 justify-around">
-              <Profile
-                img={suha}
-                role={"Contract Dev"}
-                name={"홍길동"}
-                link={"https://github.com/djm07073"}
-              />
-              <Profile
-                img={jihwan}
-                role={"Contract Dev"}
-                name={"홍길동"}
-                link={"https://github.com/winterjihwan"}
               />
             </div>
           </div>
