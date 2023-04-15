@@ -68,7 +68,7 @@ const Home = () => {
         </h1>
         <div className="flex flex-row ">
           <div className="flex items-center flex-col m-16">
-            <AiFillCloseCircle className="text-primary-500 text-5xl mb-3" />
+            <AiFillCloseCircle className="text-primary-500 w-28 h-28 text-5xl mb-3" />
             <h2 className="text-primary-700 mb-6 text-xl font-bold">
               {" "}
               Poor Accessibility
@@ -80,7 +80,7 @@ const Home = () => {
             </div>
           </div>
           <div className="flex  items-center flex-col m-16">
-            <CgDanger className="text-primary-500 text-5xl mb-3" />
+            <CgDanger className="text-primary-500  w-28 h-28 text-5xl mb-3" />
             <h2 className="text-primary-700 mb-6 text-xl font-bold">Risk</h2>
             <div className=" text-center text-gray-600 w-48">
               Users who invest in DEX in order to achieve high returns must
@@ -91,7 +91,7 @@ const Home = () => {
             </div>
           </div>
           <div className="flex  items-center flex-col m-16 ">
-            <SiHiveBlockchain className="text-primary-500 text-5xl mb-3" />
+            <SiHiveBlockchain className="text-primary-500 w-28 h-28 text-5xl mb-3" />
             <h2 className="text-primary-700 mb-6 text-xl font-bold">
               Not fully decentralized
             </h2>
@@ -112,12 +112,13 @@ const Home = () => {
         <div className="flex flex-row items-center mb-10">
           <div>
             <div className="flex flex-col items-center justify-center">
-              <h1 className="text-xl mb-2 text-primary-700 font-bold">
-                안정성
+              <h1 className="text-[36px] mb-2 text-primary-700 font-bold">
+                Safety
               </h1>
-              <p className="text-primary-900">
-                Lorem ipsum dolor sit amet, <br />
-                consectetur adipiscing elit. Sed
+              <p className="text-primary-900 w-[600px]">
+                Our service applies the methods used in futures trading,
+                allowing investors to hedge their positions against the high
+                price volatility of minor tokens.
               </p>
             </div>
           </div>
@@ -133,12 +134,14 @@ const Home = () => {
           </div>
           <div>
             <div className="flex flex-col items-center justify-center">
-              <h1 className="text-xl mb-2 text-primary-700 font-bold">
-                친화적인 ux
+              <h1 className="text-[36px] mb-2 text-primary-700 font-bold">
+                Friendly UX
               </h1>
-              <p className="text-primary-900">
-                Lorem ipsum dolor sit amet, <br />
-                consectetur adipiscing elit. Sed
+              <p className="text-primary-900 w-[600px]">
+                Our service provides a user-friendly interface, allowing users
+                to easily enter into futures contracts and invest assets. It
+                also clearly explains the terms of the futures contract and
+                makes it easy for investors to understand.
               </p>
             </div>
           </div>
@@ -147,12 +150,14 @@ const Home = () => {
         <div className="flex flex-row items-center mb-10">
           <div>
             <div className="flex flex-col items-center justify-center">
-              <h1 className="text-xl mb-2 text-primary-700 font-bold">
-                완전한 탈중앙화
+              <h1 className="text-[36px] mb-2 text-primary-700 font-bold">
+                Full decentralization
               </h1>
-              <p className="text-primary-900">
-                Lorem ipsum dolor sit amet, <br />
-                consectetur adipiscing elit. Sed
+              <p className="text-primary-900 w-[600px]">
+                Unlike existing order book based futures exchanges, trading is
+                handled in a decentralized way. This guarantees security and
+                transparency, and enables free trade with few intermediary fees
+                or restrictions.
               </p>
             </div>
           </div>
@@ -234,8 +239,9 @@ const Home = () => {
                   Meet our team
                 </p>
                 <p className="mt-4 max-w-2xl text-xl leading-7 text-gray-500 lg:mx-auto">
-                  Lorem ipsum dolor sit amet consect adipisicing elit. Possimus
-                  magnam voluptatum cupiditate veritatis in accusamus quisquam.
+                  Our team contributes to promoting the value of
+                  decentralization and the advantages of Ethereum, and further
+                  developing blockchain technology.
                 </p>
                 <div className="mt-8 flex justify-center">
                   <div className="rounded-md shadow">

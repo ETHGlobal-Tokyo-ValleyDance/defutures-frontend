@@ -39,6 +39,7 @@ const Future = () => {
             <TokenSelector
               tokenList={tokenList}
               selected={longToken.symbol}
+              tokenImg={longToken.imgUrl}
               onSelect={onLongTokenChange}
             />
           }
@@ -54,6 +55,7 @@ const Future = () => {
             <TokenSelector
               tokenList={tokenList}
               selected={shortToken.symbol}
+              tokenImg={shortToken.imgUrl}
               onSelect={onShortTokenChange}
             />
           }
@@ -66,8 +68,11 @@ const Future = () => {
         <hr className="my-4" />
         <NumberInput
           left={
-            <div className="px-5 py-1 border rounded bg-neutral-200">
-              <p className="font-semibold">{shortToken.symbol}</p>
+            <div className="px-5 p-2 h-full flex-center border rounded-lg bg-neutral-200">
+              <img src={shortToken.imgUrl} className="w-8 ml-2 mr-2" />
+              <p className="font-semibold pt-1 ml-2 mr-2">
+                {shortToken.symbol}
+              </p>
             </div>
           }
           value={margin}
@@ -85,9 +90,7 @@ const Future = () => {
             <div className="flex items-center">
               <span className="chip chip-blue">Sell</span>
               <p className="text-2xl mx-3 pt-0.5 font-semibold">
-                {shortToken.symbol}
-                {" "}&#8594;{" "}
-                {longToken.symbol}
+                {shortToken.symbol} &#8594; {longToken.symbol}
               </p>
               <span className="chip chip-primary">Buy</span>
             </div>
@@ -167,7 +170,8 @@ const Future = () => {
                 isDisabled ? "bg-neutral-300 text-white" : "btn-primary"
               )}
             >
-              Start to invest {shortToken.symbol} → {longToken.symbol} DeFuture 🚀
+              Start to invest {shortToken.symbol} → {longToken.symbol} DeFuture
+              🚀
             </button>
           </div>
         </div>

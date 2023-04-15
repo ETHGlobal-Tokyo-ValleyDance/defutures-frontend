@@ -55,6 +55,7 @@ const Hedge = () => {
           <TokenSelector
             tokenList={tokenList}
             selected={baseToken.symbol}
+            tokenImg={baseToken.imgUrl}
             onSelect={setBaseSymbol}
           />
         </div>
@@ -67,6 +68,7 @@ const Hedge = () => {
           <TokenSelector
             tokenList={tokenList}
             selected={farmToken.symbol}
+            tokenImg={farmToken.imgUrl}
             onSelect={setFarmSymbol}
           />
         </div>
@@ -75,14 +77,20 @@ const Hedge = () => {
           Enter the amount of BASE Token you'd like to invest.
         </p>
         <hr className="mt-2" />
+
         <NumberInput
           className="mt-4"
           value={totalAmount}
           onChange={setTotalAmount}
           left={
-            <div className="px-5 h-full flex-center border rounded-lg bg-neutral-200">
-              <p className="font-semibold pt-1">{baseToken.symbol}</p>
-            </div>
+            <>
+              <div className="px-5 p-2 h-full flex-center border rounded-lg bg-neutral-200">
+                <img src={baseToken.imgUrl} className="w-8 ml-2" />
+                <p className="font-semibold pt-1 ml-2 mr-2">
+                  {baseToken.symbol}
+                </p>
+              </div>
+            </>
           }
           right={
             <button className="btn btn-primary h-full flex-center">Max</button>
@@ -143,7 +151,8 @@ const Hedge = () => {
               <b className="text-primary-700">
                 {spotAmount} {baseToken.symbol}{" "}
               </b>
-              will be allocated to {dexName} {baseToken.symbol}+{farmToken.symbol}
+              will be allocated to {dexName} {baseToken.symbol}+
+              {farmToken.symbol}
               <br />• remaining{" "}
               <b className="text-primary-700">
                 {(1000 * +totalAmount - spotAmount * 1000) / 1000}{" "}
