@@ -10,7 +10,7 @@ import { getStrikeAmount } from "utils/uniswap-lib";
 export const useFuture = () => {
   const { chainId } = useWallet();
   const chain = Chain.get(chainId);
-  const tokenList = Token.fromChain(chainId);
+  const tokenList = Token.getAll().filter(t => t.chainId === chainId);
 
   const [futureMarket, setFutureMarket] = useState<FutureMarketInfo | null>(
     null

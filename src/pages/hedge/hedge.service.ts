@@ -14,7 +14,7 @@ import { getAmountOut, getStrikeAmount } from "utils/uniswap-lib";
 export const useHedge = (minSpotPerc: number) => {
   // TODO: chainId
   const { chainId } = useWallet();
-  const tokenList = Token.fromChain(chainId);
+  const tokenList = Token.getAll().filter(t => t.chainId === chainId);
   const chain = Chain.get(chainId);
 
   // Defuture & UniswapPair Infos (reserve0,1, leading0,1 ...)

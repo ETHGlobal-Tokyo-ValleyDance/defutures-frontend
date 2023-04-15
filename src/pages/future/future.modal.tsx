@@ -55,6 +55,9 @@ export const FutureModal = ({
     try {
       setIsLoading(true);
 
+      console.log(longAmount);
+      console.log(margin);
+
       // TODO: SIGNER
       const tx = await shortToken
         .getChain()
@@ -177,7 +180,7 @@ export const FutureModal = ({
             </div>
 
             <div className="flex-1 flex-col flex-center mb-2">
-              <span className="chip chip-blue mb-2">Base</span>
+              <span className="chip chip-blue mb-2">Sell</span>
               <div className="flex items-center">
                 <TokenIcon token={shortToken} />
                 <p className="ml-2 text-2xl">
@@ -187,7 +190,7 @@ export const FutureModal = ({
 
               <p className="font-extrabold text-2xl my-4">↓</p>
 
-              <span className="chip chip-primary mb-2">Farm</span>
+              <span className="chip chip-primary mb-2">Buy</span>
               <div className="flex items-center">
                 <TokenIcon token={longToken} />
                 <p className="ml-2 text-2xl">

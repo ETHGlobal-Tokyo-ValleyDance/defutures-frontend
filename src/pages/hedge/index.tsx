@@ -38,7 +38,7 @@ const Hedge = () => {
   const { dexName } = Chain.get(chainId).defuture;
 
   return (
-    <div className="px-24 py-8 flex">
+    <div className="px-24 pt-8 pb-16 flex">
       <div className="px-10 py-6 flex flex-col flex-[2] border-r border-r-neutral-200">
         {/* DESCRIPTION */}
         <div className=" bg-primary-50 p-5 rounded-lg">
