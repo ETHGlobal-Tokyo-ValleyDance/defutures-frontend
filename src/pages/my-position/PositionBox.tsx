@@ -7,9 +7,10 @@ import { useBalance } from "states/balances.state";
 
 interface PositionBoxProps {
   chainId: CHAINID
+  i: number
 }
 
-const PositionBox = ({ chainId }: PositionBoxProps) => {
+const PositionBox = ({ chainId, i }: PositionBoxProps) => {
   const pair = LPTOKENS.find(t => t.chainId === chainId)!;
   const t0 = Token.get(chainId, pair.token0)!;
   const t1 = Token.get(chainId, pair.token1)!;
@@ -18,7 +19,7 @@ const PositionBox = ({ chainId }: PositionBoxProps) => {
   const pairBalance = useBalance(pairToken)
   return (
     <div className="h-16 border-b-2 grid grid-cols-[2fr_4fr_2fr_5fr]">
-      <div className="flex-center">
+      <div className="flex-center font-bold">
         {pairToken.getChain().name}
       </div>
       <div className="flex-center">
@@ -33,6 +34,16 @@ const PositionBox = ({ chainId }: PositionBoxProps) => {
 
       <div className="flex-center">
         <p>{(Math.floor(+pairBalance * 1E6) / 1E6) || "0.0"} LP</p>
+      </div>
+
+      <div className="flex flex-center">
+        {i < 2 ? (
+          <div className="flex items-center gap-2">
+            <div className="chip-sm chip-primary"> LONG</div>
+            <p className="pt-0.5 text-lg">{120 / (i + 1)} {t0.symbol} → {60 / (i + 1)} {t1.symbol} </p>
+            <div className="chip-sm chip-blue"> SHORT</div>
+          </div>
+        ) : "-"}
       </div>
     </div>
   );

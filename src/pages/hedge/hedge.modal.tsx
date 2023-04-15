@@ -8,6 +8,7 @@ import { useSigner } from "states/wallet.state";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { TokenIcon } from "components/common/TokenIcon";
 import {BsFillCheckCircleFill} from "react-icons/bs"
+import { sendAddHedgeTx } from "api/sendAddHedgeTx";
 
 interface HedgeModalProps {
   close: () => void;
@@ -33,6 +34,7 @@ export const HedgeModal = ({
         .approve(farmToken.getChain().defuture.router, total);
       await tx.wait();
       setStep(Step.Buy);
+      sendAddHedgeTx(farmToken.chainId, tx.hash);// no need to wait
     } catch (e) {
       console.log("Hedge Amount Error", e);
     } finally {

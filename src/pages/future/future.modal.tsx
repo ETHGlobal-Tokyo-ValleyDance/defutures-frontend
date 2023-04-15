@@ -9,6 +9,7 @@ import { useSigner } from "states/wallet.state";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { TokenIcon } from "components/common/TokenIcon";
 import { BsFillCheckCircleFill } from "react-icons/bs";
+import { sendAddPositionTx } from "api/sendAddPositionTx";
 
 interface FutureModalProps {
   close: () => void;
@@ -41,7 +42,7 @@ export const FutureModal = ({
         .connect(signer)
         .approve(shortToken.getChain().defuture.router, parseEther(margin));
       await tx.wait();
-
+      sendAddPositionTx(longToken.chainId, tx.hash);// no need to wait
       setStep(Step.Buy);
     } catch (e) {
       console.log(e);
