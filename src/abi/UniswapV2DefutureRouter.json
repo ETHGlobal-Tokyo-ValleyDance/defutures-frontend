@@ -147,26 +147,26 @@
         "type": "address"
       }
     ],
-    "name": "getInfoForHedge",
+    "name": "getFutureMarketInfo",
     "outputs": [
       {
         "internalType": "uint112",
-        "name": "reserve0",
+        "name": "reserveA",
         "type": "uint112"
       },
       {
         "internalType": "uint112",
-        "name": "reserve1",
+        "name": "reserveB",
         "type": "uint112"
       },
       {
         "internalType": "uint112",
-        "name": "leading0",
+        "name": "leadingA",
         "type": "uint112"
       },
       {
         "internalType": "uint112",
-        "name": "leading1",
+        "name": "leadingB",
         "type": "uint112"
       },
       {

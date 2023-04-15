@@ -8,6 +8,7 @@ import { parseEther } from "ethers/lib/utils";
 import { useSigner } from "states/wallet.state";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { TokenIcon } from "components/common/TokenIcon";
+import { BsFillCheckCircleFill } from "react-icons/bs";
 
 interface FutureModalProps {
   close: () => void;
@@ -16,7 +17,7 @@ interface FutureModalProps {
 
 export const FutureModal = ({
   close,
-  futures: { shortToken, longToken, margin, totalSupply, longAmount },
+  futures: { shortToken, longToken, margin, totalSupply, longAmount, shortAmount },
 }: FutureModalProps) => {
   const [step, setStep] = useState<Step>(Step.Approve);
   const { signer, account } = useSigner();
@@ -146,18 +147,38 @@ export const FutureModal = ({
               )}
             </div>
           )}
+
+          {/* NFT PREVIEW */}
           <div
             className={cn(
-              "h-full shadow rounded-lg p-4",
+              "h-full shadow rounded-lg p-4 flex flex-col",
               step === Step.Done && "border-4 -m-1 border-primary-500"
             )}
           >
-            <div className="flex">
-              <p className="chip-sm chip-neutral font-semibold">
+            <div className="flex items-center">
+                <span className="chip-sm chip-neutral font-semibold">
                 #{totalSupply + 1}
-              </p>
+                </span>
+                {step === Step.Done && (
+                    <BsFillCheckCircleFill size={16} className="ml-1.5 text-green-600" />
+                )}
             </div>
-            <div></div>
+
+            <div className="flex-1 flex-col flex-center mb-2">
+                <span className="chip chip-blue mb-2">Base</span>
+                <div className="flex items-center">
+                    <TokenIcon token={shortToken}/>
+                    <p className="ml-2 text-2xl">{shortAmount} {shortToken.symbol}</p>
+                </div>
+
+                <p className="font-extrabold text-2xl my-4">↓</p>
+
+                <span className="chip chip-primary mb-2">Farm</span>
+                <div className="flex items-center">
+                    <TokenIcon token={longToken}/>
+                    <p className="ml-2 text-2xl">{longAmount} {longToken.symbol}</p>
+                </div>
+            </div>
           </div>
         </div>
       </div>

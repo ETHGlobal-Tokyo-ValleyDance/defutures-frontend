@@ -8,17 +8,25 @@ import { getAmountOut, getStrikeAmount } from "utils/uniswap-lib";
 
 //   tokenA: Token,
 //   tokenB: Token
-const mockContract = async (): Promise<HedgeInfo> => {
-  // mock data
-  return {
-    reserveBase: parseEther("1000000"),
-    reserveFarm: parseEther("10000000"),
-    leadingBase: parseEther("900000"),
-    leadingFarm: parseEther("10000000"),
-    totalSupply: 102,
-    minMarginBps: 3000,
-    updatedAt: new Date().getTime(),
-  };
+const mockContract = async (
+  chainId: number,
+  baseToken: Token,
+  farmToken: Token
+): Promise<HedgeInfo> => {
+  return Chain.get(chainId)
+    .getV2DefutureRouter()
+    .getInfoForHedge(baseToken.address, farmToken.address)
+    .then((res) => {
+      return {
+        reserveBase: res.reserve0,
+        reserveFarm: res.reserve1,
+        leadingBase: res.leading0,
+        leadingFarm: res.leading1,
+        totalSupply: res.totalSupply.toNumber(),
+        minMarginBps: res.minMarginBps.toNumber(),
+        updatedAt: new Date().getTime(),
+      };
+    });
 };
 
 interface HedgeInfo {
@@ -35,7 +43,7 @@ interface HedgeInfo {
 // farm token: swapped asset for invest position
 export const useHedge = (minSpotPerc: number) => {
   // TODO: chainId
-  const {chainId} = useWallet();
+  const { chainId } = useWallet();
   const tokenList = Token.fromChain(chainId);
   const chain = Chain.get(chainId);
 
@@ -109,7 +117,11 @@ export const useHedge = (minSpotPerc: number) => {
     const tolerance =
       (strikeAmount.mul(1e4).div(liquidatedPoint).toNumber() - 10000) / 100;
 
-    return { marginRatio, tolerance, spotAmount: +formatEther(spotAmount.mul(1E3)) / 1000 };
+    return {
+      marginRatio,
+      tolerance,
+      spotAmount: +formatEther(spotAmount.mul(1e3)) / 1000,
+    };
   }, [hedgeInfo?.updatedAt, totalAmount, spotPercent]);
 
   const [baseToken, farmToken]: [Token, Token] = useMemo(() => {
@@ -120,7 +132,7 @@ export const useHedge = (minSpotPerc: number) => {
   }, [chainId, baseSymbol, farmSymbol]);
 
   useEffect(() => {
-    mockContract().then(setHedgeInfo);
+    mockContract(chainId, baseToken, farmToken).then(setHedgeInfo);
   }, []);
 
   const onChangeSpotPercent: ChangeEventHandler<HTMLInputElement> = ({

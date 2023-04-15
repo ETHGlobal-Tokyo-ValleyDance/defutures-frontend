@@ -7,6 +7,7 @@ import { parseEther } from "ethers/lib/utils";
 import { useSigner } from "states/wallet.state";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { TokenIcon } from "components/common/TokenIcon";
+import {BsFillCheckCircleFill} from "react-icons/bs"
 
 interface HedgeModalProps {
   close: () => void;
@@ -15,7 +16,7 @@ interface HedgeModalProps {
 
 export const HedgeModal = ({
   close,
-  hedges: { totalSupply, baseToken, farmToken, totalAmount, spotPercent },
+  hedges: { totalSupply, baseToken, farmToken, totalAmount, spotPercent, spotAmount },
 }: HedgeModalProps) => {
   const { signer, account } = useSigner();
   const total = parseEther(totalAmount);
@@ -121,22 +122,23 @@ export const HedgeModal = ({
 
         {/* RIGHT SIDE */}
         <div className="relative w-[300px] h-[360px] mr-4">
+          {/* LOADING */}
           {isLoading && (
-            <div className="absolute inset-0 bg-black/20 rounded-lg flex-center flex-col">
+            <div className="absolute inset-0 bg-black/40 rounded-lg flex-center flex-col">
               <AiOutlineLoading3Quarters
                 size={40}
                 className="mb-4 animate-spin "
               />
               {step === Step.Approve ? (
                 <div className="mt-4 flex animate-bounce">
-                  <p className="text-2xl text-center font-semibold text-neutral-700">
+                  <p className="text-2xl text-center font-semibold text-white">
                     Approving {baseToken.symbol}
                   </p>
                   <TokenIcon className="ml-2" token={baseToken} />
                 </div>
               ) : step === Step.Buy ? (
                 <div className="mt-4 flex animate-bounce">
-                  <p className="text-2xl text-center font-semibold text-neutral-700">
+                  <p className="text-2xl text-center font-semibold text-white">
                     Pending Transaction...
                   </p>
                 </div>
@@ -145,18 +147,44 @@ export const HedgeModal = ({
               )}
             </div>
           )}
+
+          {/* NFT CARD PREVIEW */}
           <div
             className={cn(
-              "h-full shadow rounded-lg p-4",
+              "h-full shadow rounded-lg p-4 flex flex-col",
               step === Step.Done && "border-4 -m-1 border-primary-500"
             )}
           >
-            <div className="flex">
-              <p className="chip-sm chip-neutral font-semibold">
+            <div className="flex items-center">
+                <span className="chip-sm chip-neutral font-semibold">
                 #{totalSupply + 1}
-              </p>
+                </span>
+                {step === Step.Done && (
+                    <BsFillCheckCircleFill size={16} className="ml-1.5 text-green-600" />
+                )}
             </div>
-            <div></div>
+
+            <div className="flex-1 flex-col flex-center mb-2">
+                <span className="chip chip-blue mb-2">Base</span>
+                <div className="flex items-center">
+                    <TokenIcon token={baseToken}/>
+                    <p className="ml-2 text-2xl">{totalAmount} {baseToken.symbol}</p>
+                </div>
+
+                <p className="font-bold">↓</p>
+                <div className="my-4 flex w-full items-center">
+                    <p className="text-lg flex-1 text-center">{spotAmount} {baseToken.symbol}</p>
+                    <p className="text-lg font-bold">+</p>
+                    <p className="text-lg flex-1 text-center"> {(1000 * +totalAmount - spotAmount * 1000) / 1000} {baseToken.symbol}</p>
+                </div>
+                <p className="font-bold">↓</p>
+
+                <span className="chip chip-primary mb-2">Farm</span>
+                <div className="flex items-center">
+                    <TokenIcon token={farmToken}/>
+                    <p className="ml-2 text-2xl">{farmToken.symbol}</p>
+                </div>
+            </div>
           </div>
         </div>
       </div>

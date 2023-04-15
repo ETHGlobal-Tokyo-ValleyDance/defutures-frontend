@@ -88,19 +88,19 @@ export const useFuture = () => {
       setMargin("" + Math.floor(+_strikeAmount * 2e3) / 1e4);
     }
   };
+
   const onShortAmountChange = (value: string) => {
     if (!futureMarket) return;
 
     setShortAmount(value);
   };
 
-  const refresh = () => {
+  const refresh = async () => {
     mockContract(longToken!, shortToken!).then(setFutureMarket);
   };
+
   useEffect(() => {
-    setLongAmount("");
-    setShortAmount("");
-    refresh();
+    refresh().then(() => onLongAmountChange("1"));
   }, [longToken?.id, shortToken?.id]);
 
   return {

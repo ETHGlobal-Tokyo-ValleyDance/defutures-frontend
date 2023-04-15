@@ -1,7 +1,13 @@
 export enum CHAINID {
   /** TESTNET **/
   Mumbai = 80001, // polygon
+  Scroll = 534353,
 }
+
+export const chainIds = [
+  CHAINID.Mumbai,
+  CHAINID.Scroll,
+]
 
 
 export interface ChainData {

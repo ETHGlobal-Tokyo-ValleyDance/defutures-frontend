@@ -1,8 +1,8 @@
 import { utils } from "ethers";
-import { CHAINID } from "interfaces/config-data.interface";
+import { CHAINID, chainIds } from "interfaces/config-data.interface";
 import { Chain } from "modules/Chain";
 
-export const connectMetamask = async (chainId: CHAINID) => {
+export const connectMetamask = async (defaultChainId: CHAINID) => {
   if (!window.ethereum) return;
 
   const [account, currentChainId] = await Promise.all([
@@ -30,13 +30,13 @@ export const connectMetamask = async (chainId: CHAINID) => {
   });
 
   let ok = true;
-  if (currentChainId !== chainId) {
-    ok = await metamaskSwitchChain(chainId);
+  if (!chainIds.includes(currentChainId)) {
+    ok = await metamaskSwitchChain(defaultChainId);
   }
   
   return {
     account,
-    chainId,
+    chainId: defaultChainId,
     ok
   };
 };
