@@ -16,18 +16,26 @@ import { SiHiveBlockchain } from "react-icons/si";
 
 const Home = () => {
   const plans = [
-    { id: 1, title: "Jun 2023", content: "Product launch", detail: "detail" },
+    {
+      id: 1,
+      title: "Jun 2023",
+      content: "Product launch",
+      detail:
+        " To launch the product, we plan to develop and test it, and create a pool to facilitate usage. We also aim to provide a user-friendly UI/UX to ensure ease of use for our users.",
+    },
     {
       id: 2,
       title: "Aug 2023",
-      content: "Expanding to new markets",
-      detail: "detail",
+      content: "Implementation of NFT future certificate trading market",
+      detail:
+        " We will add the ability to issue future certificates for future transactions in the form of NFTs. This will allow the recipient of a future to store the future certificate in their NFT wallet, and trade it if needed. 'DeFuture' thus serves as a technical foundation for the NFT future certificate trading market.",
     },
     {
       id: 3,
       title: "Jan 2024",
-      content: "Release of new features",
-      detail: "detail",
+      content: "Expanding to new markets",
+      detail:
+        "Our service is not limited to token future transactions and can be utilized in various fields such as contract management between businesses, real estate transactions, and art trading. Therefore, we plan to expand the service's features and enter different markets. By expanding into new markets, we can increase the potential of blockchain technology and enhance the value of our service.",
     },
   ];
   return (
@@ -74,9 +82,10 @@ const Home = () => {
               Poor Accessibility
             </h2>
             <div className=" text-center text-gray-600 w-48">
-              In the blockchain gift market, investors often have to use complex
-              strategies to hedge their positions, which can make it difficult
-              for new investors to enter the market and cause instability.
+              In the blockchain future market, investors often have to use
+              complex strategies to hedge their positions, which can make it
+              difficult for new investors to enter the market and cause
+              instability.
             </div>
           </div>
           <div className="flex  items-center flex-col m-16">
@@ -308,15 +317,15 @@ const Home = () => {
               {plans.map((plan) => (
                 <div
                   key={plan.id}
-                  className="relative p-8 bg-white shadow-lg rounded-md"
+                  className="flex flex-col justify-start items-center relative p-8 bg-white shadow-lg rounded-md"
                 >
-                  <div className="flex items-center">
-                    <div className="flex-shrink-0">
+                  <div className="flex">
+                    <div className="flex ">
                       <div className="flex items-center justify-center h-12 w-12 p-8 rounded-md bg-primary-500 text-white">
                         {plan.title}
                       </div>
                     </div>
-                    <div className="ml-4">
+                    <div className="flex justify-start ml-4">
                       <h3 className="text-lg leading-6 font-medium text-gray-900">
                         {plan.content}
                       </h3>
