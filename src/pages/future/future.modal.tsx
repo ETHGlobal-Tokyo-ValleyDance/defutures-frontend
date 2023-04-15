@@ -27,7 +27,7 @@ export const FutureModal = ({
     shortAmount,
   },
 }: FutureModalProps) => {
-  const [step, setStep] = useState<Step>(Step.Buy);
+  const [step, setStep] = useState<Step>(Step.Approve);
   const { signer, account } = useSigner();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -36,7 +36,6 @@ export const FutureModal = ({
     try {
       setIsLoading(true);
 
-      // TODO: SIGNER
       const tx = await shortToken
         .getContract()
         .connect(signer)

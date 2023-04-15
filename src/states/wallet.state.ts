@@ -17,7 +17,7 @@ export const accountAtom = atom<string | null>({
 export const chainIdAtom = atom<number>({
   key: "atom/chainId",
   // TODO: CHANGE DEFAULT CHAIN ID
-  default: CHAINID.Scroll,
+  default: CHAINID.Mumbai,
 });
 
 export const useWallet = () => {
