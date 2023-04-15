@@ -1,5 +1,19 @@
 import Usdcsvg from "../../assets/token/usdcSvg.svg";
 import Ethsvg from "../../assets/token/ethSvg.svg";
+import PositionBox from "./PositionBox";
+
+const MockAssets = [
+  {
+    pair: "uniswapv2USDC - ETH",
+    LP: "12.341",
+    Futures: "Long Short",
+  },
+  {
+    pair: "uniswapv2USDC - ETH",
+    LP: "12.121",
+    Futures: "Long Short",
+  },
+];
 const MyPosition = () => {
   return (
     <div className="px-10 py-6 ">
@@ -9,16 +23,9 @@ const MyPosition = () => {
           <p> LP Balance </p>
           <p> Futures </p>
         </div>
-        <div className="h-16 p-4">
-          <div className="flex-1 flex-center text-center">
-            <img src={Usdcsvg} />
-            <img src={Ethsvg} />
-            UniswapV2 USDC + ETH
-          </div>
-          <div className="flex-1 flex-center text-center">120.98LP</div>
-          <div className="flex-1 flex-center text-center">LONG SHORT</div>
-        </div>
-        <div className="h-16 p-4">
+        <PositionBox />
+
+        <div className="h-16 ">
           <div className="flex-1 flex-center text-center">
             <img src={Usdcsvg} />
             <img src={Ethsvg} />
