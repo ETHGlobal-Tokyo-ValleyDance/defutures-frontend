@@ -4,7 +4,7 @@ const MyPosition = () => {
   return (
     <div className="px-10 py-6 ">
       <div className="flex bg-primary-50 ounded shadow-xl flex-col flex-1 [&>div]:grid [&>div]:grid-cols-3">
-        <div className="w-full text-primary-700 border-b py-2 border-b-neutral-200 [&>p]:text-center [&>p]:font-semibold [&>p]:text-lg">
+        <div className="w-full bg-primary-200 text-primary-700 border-b py-2 border-b-neutral-200 [&>p]:text-center [&>p]:font-semibold [&>p]:text-lg">
           <p> Pair </p>
           <p> LP Balance </p>
           <p> Futures </p>
