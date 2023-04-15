@@ -16,7 +16,7 @@ export const accountAtom = atom<string | null>({
 export const chainIdAtom = atom<number>({
   key: "atom/chainId",
   // TODO: CHANGE DEFAULT CHAIN ID
-  default: CHAINID.Baobab,
+  default: CHAINID.Mumbai,
 });
 
 export const useWallet = () => {
@@ -34,8 +34,8 @@ export const useConnectWallet = () => {
   const resetChainId = useResetRecoilState(chainIdAtom);
 
   const connect = async () => {
-    const res = await connectMetamask();
-    if (!res) return alert("!!!!!");
+    const res = await connectMetamask(chainId);
+    if (!res || !res.ok) return location.href = '/'
 
     setAccount(res!.account);
     setChainId(res!.chainId);

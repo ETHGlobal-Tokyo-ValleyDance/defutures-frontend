@@ -11,6 +11,7 @@ export class Chain implements ChainData {
   rpcUrl!: string;
   imgUrl!: string;
   defuture!: {
+    defaultTokens: [string, string],
     router: string;
     dexName: string;
     dexRouter: string;

@@ -42,8 +42,9 @@
   content: "▼";
   color: #242424;
   font-size: 12px;
-  top: 9.3px;
-  right: 10px;
+  line-height: 22px;
+  top: 7px;
+  right: -4px;
   position: absolute;
 }
 

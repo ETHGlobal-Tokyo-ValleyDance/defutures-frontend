@@ -1,44 +1,18 @@
 import { CHAINID, ChainData } from "interfaces/config-data.interface";
+import polygon from "assets/chain/polygon.png"
 
 const CHAINS: { [chainId in CHAINID]: ChainData } = {
   [CHAINID.Mumbai]: {
     id: CHAINID.Mumbai,
     name: "Polygon",
     symbol: "MATIC",
-    rpcUrl: "",
-    // TODO
-    imgUrl: "",
+    rpcUrl: "https://rpc-mumbai.maticvigil.com",
+    imgUrl: polygon,
     defuture: {
+      defaultTokens: ["MATIC", "USDC"],
       dexName: "QuickSwap V2",
-      router: "",
-      dexRouter: ""
-    }
-  },
-  [CHAINID.Baobab]: {
-    id: CHAINID.Baobab,
-    name: "Klaytn",
-    symbol: "KLAY",
-    rpcUrl: "https://public-en-baobab.klaytn.net",
-    // TODO
-    imgUrl: "",
-    defuture: {
-      dexName: "Klayswap",
-      router: "0xF38629F9046be0efb785137F74a041C8547122e8",
-      dexRouter: "0x4B9E4e5C53aBA6978157d6aB8e09D0B64aE4F5AE"
-    }
-  },
-
-  [CHAINID.LOCAL]: {
-    id: CHAINID.LOCAL,
-    name: "LOCAL",
-    symbol: "ETH",
-    rpcUrl: "http://localhost:8545",
-    // TODO
-    imgUrl: "",
-    defuture: {
-      dexName: "UniswapV2",
-      router: "0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82",
-      dexRouter: ""
+      router: "0x48C795467E0a894806F8aaF7dc93061180DA2E20",
+      dexRouter: "0x7500852F01BfA4178f29b56dB20584c6C6DD5571"
     }
   },
 };
