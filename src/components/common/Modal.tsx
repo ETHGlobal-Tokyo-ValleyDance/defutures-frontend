@@ -38,17 +38,17 @@ const Modal: FC<Props> = ({
         onClick={closable ? closeModal : undefined}
       />
 
-      <div className="w-[720px] z-50 overflow-hidden rounded-xl bg-white pt-4">
-        <header className="mx-4 flex items-center justify-between h-[22px]">
+      <div className="w-[720px] z-50 overflow-hidden rounded-xl bg-white pt-6">
+        <header className="mx-4 flex items-center justify-between">
           {onBack && (
             <div onClick={onBack} className="cursor-pointer">
-                <IoMdArrowBack />
+                <IoMdArrowBack size={18} />
             </div>
           )}
-          <p className="text-theme-black-900">{title}</p>
+          <p className="text-neutral-900 text-lg font-semibold">{title}</p>
           {closable && (
             <div onClick={closeModal} className="cursor-pointer">
-              <IoMdClose />
+              <IoMdClose size={18} />
             </div>
           )}
         </header>

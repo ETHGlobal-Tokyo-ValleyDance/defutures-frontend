@@ -1,7 +1,12 @@
 import { Token } from "modules/Token";
+import { cn } from "utils";
 
-export const TokenIcon = ({ token }: { token: Token }) => {
+interface TokenIconProps {
+  token: Token
+  className?: string
+}
+export const TokenIcon = ({ token, className }: TokenIconProps) => {
   return (
-    <img src={token.imgUrl} className="rounded-full border mr-2 w-7 h-7" />
+    <img src={token.imgUrl} className={cn("rounded-full border w-7 h-7", className)} />
   );
 };

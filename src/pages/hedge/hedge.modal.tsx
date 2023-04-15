@@ -5,6 +5,8 @@ import { cn } from "utils";
 import { Step, StepButton } from "components/common/StepButton";
 import { parseEther } from "ethers/lib/utils";
 import { useSigner } from "states/wallet.state";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { TokenIcon } from "components/common/TokenIcon";
 
 interface HedgeModalProps {
   close: () => void;
@@ -15,7 +17,7 @@ export const HedgeModal = ({
   close,
   hedges: { totalSupply, baseToken, farmToken, totalAmount, spotPercent },
 }: HedgeModalProps) => {
-  const {signer, account} = useSigner();
+  const { signer, account } = useSigner();
   const total = parseEther(totalAmount);
   const [step, setStep] = useState<Step>(Step.Approve);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -24,23 +26,23 @@ export const HedgeModal = ({
     if (step !== Step.Approve || !signer) return;
     try {
       setIsLoading(true);
-
       const tx = await farmToken
         .getContract()
         .connect(signer)
         .approve(farmToken.getChain().defuture.router, total);
       await tx.wait();
       setStep(Step.Buy);
-    } catch {
+    } catch (e) {
+      console.log("Hedge Amount Error", e);
     } finally {
-      setIsLoading(true);
+      setIsLoading(false);
     }
   };
 
   const addPosition = async () => {
     if (step !== Step.Buy || !signer) return;
     try {
-      setIsLoading(false);
+      setIsLoading(true);
       const spot = total.mul(Math.floor(+spotPercent * 10)).div(1e3);
 
       const tx = await farmToken
@@ -50,16 +52,17 @@ export const HedgeModal = ({
         .addLiquidityHedged(
           baseToken.address,
           farmToken.address,
-          account!,
+          await signer.getAddress(),
           spot,
           total.sub(spot)
         );
 
       await tx.wait();
       setStep(Step.Done);
-    } catch {
+    } catch (e) {
+      console.log(e);
     } finally {
-      setIsLoading(true);
+      setIsLoading(false);
     }
   };
 
@@ -69,7 +72,7 @@ export const HedgeModal = ({
   };
 
   return (
-    <Modal closeModal={close} title="Buy Future">
+    <Modal closeModal={close} title="Open Hedge Position">
       <div className="p-4 pb-6 flex">
         {/* LEFT SIDE */}
         <div className="flex flex-1 flex-col justify-center p-4 pb-8 mr-10">
@@ -117,7 +120,31 @@ export const HedgeModal = ({
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="w-[300px] h-[360px] pr-4">
+        <div className="relative w-[300px] h-[360px] mr-4">
+          {isLoading && (
+            <div className="absolute inset-0 bg-black/20 rounded-lg flex-center flex-col">
+              <AiOutlineLoading3Quarters
+                size={40}
+                className="mb-4 animate-spin "
+              />
+              {step === Step.Approve ? (
+                <div className="mt-4 flex animate-bounce">
+                  <p className="text-2xl text-center font-semibold text-neutral-700">
+                    Approving {baseToken.symbol}
+                  </p>
+                  <TokenIcon className="ml-2" token={baseToken} />
+                </div>
+              ) : step === Step.Buy ? (
+                <div className="mt-4 flex animate-bounce">
+                  <p className="text-2xl text-center font-semibold text-neutral-700">
+                    Pending Transaction...
+                  </p>
+                </div>
+              ) : (
+                ""
+              )}
+            </div>
+          )}
           <div
             className={cn(
               "h-full shadow rounded-lg p-4",

@@ -24,7 +24,7 @@ export const TokenSelector = ({
     <div className="flex flex-row items-center">
       <TokenIcon token={selected} />
       <select
-        className="outline-none bg-transparent font-semibold border rounded pl-2 pt-1.5 p-1"
+        className="outline-none bg-transparent font-semibold border rounded pl-2 pt-1.5 p-1 ml-2"
         onChange={onOptionChanged}
       >
         {tokenList.map((t) => (

@@ -5,10 +5,11 @@ import { cn, useModal } from "utils";
 import { HedgeModal } from "./hedge.modal";
 import { TokenIcon } from "components/common/TokenIcon";
 import { useBalance } from "states/balances.state";
+import { useWallet } from "states/wallet.state";
+import { Chain } from "modules/Chain";
 
 const MIN_SPOT_PERCENT = 60;
 const Hedge = () => {
-
   const hedges = useHedge(MIN_SPOT_PERCENT);
   const {
     totalAmount,
@@ -28,12 +29,13 @@ const Hedge = () => {
     onChangeSpotPercent,
   } = hedges;
 
+  const { chainId, account } = useWallet();
   const [isModalOpen, openModal, closeModal] = useModal(false);
-  const disabled = +tolerance < 0;
+
+  const disabled =
+    +tolerance < 0 || !account || marginRatio < minMarginBps / 100;
   const baseTokenBalance = useBalance(baseToken);
-  console.log(baseTokenBalance)
-  // TODO
-  const dexName = "Uniswap V2";
+  const { dexName } = Chain.get(chainId).defuture;
 
   return (
     <div className="px-24 py-12 flex">
@@ -86,10 +88,8 @@ const Hedge = () => {
           left={
             <div className="flex items-center">
               <TokenIcon token={baseToken} />
-              <div className="px-4 p-1 h-full flex-center border rounded-lg bg-neutral-200">
-                <p className="font-semibold">
-                  {baseToken.symbol}
-                </p>
+              <div className="px-4 ml-2 p-1 h-full flex-center border rounded-lg bg-neutral-200">
+                <p className="font-semibold">{baseToken.symbol}</p>
               </div>
             </div>
           }
@@ -224,13 +224,17 @@ const Hedge = () => {
           </div>
 
           <div className="flex-1 mt-2 flex-center">
-            <button onClick={openModal} className="btn-lg btn-primary">
+            <button
+              onClick={openModal}
+              disabled={disabled}
+              className={cn("btn-lg", disabled ? "btn-secondary" : "btn-primary")}
+            >
               Start to invest Hedged position 🚀
             </button>
           </div>
         </div>
       </div>
-      {isModalOpen && (<HedgeModal close={closeModal} hedges={hedges} />)}
+      {isModalOpen && <HedgeModal close={closeModal} hedges={hedges} />}
     </div>
   );
 };

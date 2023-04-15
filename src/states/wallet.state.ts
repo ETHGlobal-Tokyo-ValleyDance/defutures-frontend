@@ -58,7 +58,7 @@ export const useSigner = () => {
   const account = useRecoilValue(accountAtom);
   return {
     signer:
-      !account || !window.ethereum
+      account && window.ethereum
         ? // @ts-ignore
           new providers.Web3Provider(window.ethereum!).getSigner()
         : null,
