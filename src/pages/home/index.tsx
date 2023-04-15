@@ -26,16 +26,16 @@ const Home = () => {
     {
       id: 2,
       title: "Aug 2023",
-      content: "Implementation of NFT gift certificate trading market",
+      content: "Implementation of NFT future certificate trading market",
       detail:
-        " We will add the ability to issue gift certificates for gift transactions in the form of NFTs. This will allow the recipient of a gift to store the gift certificate in their NFT wallet, and trade it if needed. 'DeFuture' thus serves as a technical foundation for the NFT gift certificate trading market.",
+        " We will add the ability to issue future certificates for future transactions in the form of NFTs. This will allow the recipient of a future to store the future certificate in their NFT wallet, and trade it if needed. 'DeFuture' thus serves as a technical foundation for the NFT future certificate trading market.",
     },
     {
       id: 3,
       title: "Jan 2024",
       content: "Expanding to new markets",
       detail:
-        "Our service is not limited to token gift transactions and can be utilized in various fields such as contract management between businesses, real estate transactions, and art trading. Therefore, we plan to expand the service's features and enter different markets. By expanding into new markets, we can increase the potential of blockchain technology and enhance the value of our service.",
+        "Our service is not limited to token future transactions and can be utilized in various fields such as contract management between businesses, real estate transactions, and art trading. Therefore, we plan to expand the service's features and enter different markets. By expanding into new markets, we can increase the potential of blockchain technology and enhance the value of our service.",
     },
   ];
   return (
@@ -82,9 +82,10 @@ const Home = () => {
               Poor Accessibility
             </h2>
             <div className=" text-center text-gray-600 w-48">
-              In the blockchain gift market, investors often have to use complex
-              strategies to hedge their positions, which can make it difficult
-              for new investors to enter the market and cause instability.
+              In the blockchain future market, investors often have to use
+              complex strategies to hedge their positions, which can make it
+              difficult for new investors to enter the market and cause
+              instability.
             </div>
           </div>
           <div className="flex  items-center flex-col m-16">
