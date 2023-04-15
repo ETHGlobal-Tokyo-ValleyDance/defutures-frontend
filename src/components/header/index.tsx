@@ -3,19 +3,20 @@ import { NavItem } from "./NavItem";
 import { useConnectWallet } from "states/wallet.state";
 import { ellipsisAddress } from "utils";
 import { Link } from "react-router-dom";
+import Logo from "../../assets/Logo.png";
 
 const Header = () => {
   const { account, chainId, connect, disconnect } = useConnectWallet();
 
   const onDisconnect = () => {
-    if(confirm("Disconnect Wallet?")) disconnect();
-  }
+    if (confirm("Disconnect Wallet?")) disconnect();
+  };
 
   return (
     <header className="border-b border-b-neutral-300 flex flex-col">
-      <div className="h-[75px] px-40 flex justify-between items-center">
+      <div className="h-[75px] px-20 flex justify-between items-center">
         <Link to={ROUTES.HOME}>
-          <p className="font-extrabold text-2xl text-primary-500">DeFutures</p>
+          <img src={Logo} className="w-60 " />
         </Link>
 
         {account ? (
@@ -23,9 +24,9 @@ const Header = () => {
             {ellipsisAddress(account)}
           </button>
         ) : (
-            <button className="btn btn-primary" onClick={connect}>
-              Connect
-            </button>
+          <button className="btn btn-primary" onClick={connect}>
+            Connect
+          </button>
         )}
       </div>
       <div className="flex mt-2 px-40">
