@@ -122,57 +122,69 @@ const Home = () => {
           <div>
             <div className="flex flex-col items-center justify-center">
               <h1 className="text-[36px] mb-2 text-primary-700 font-bold">
-                Safety
+                Hedged Liquidation
               </h1>
               <p className="text-primary-900 w-[600px]">
-                Our service applies the methods used in futures trading,
-                allowing investors to hedge their positions against the high
-                price volatility of minor tokens.
+                Liquidators choose one pair of an asset, the amount to invest,
+                an asset of either to farm and margin ratio aka. volatility. A
+                portion of the base tokens will be swapped to farm tokens,
+                creating a stake consisting of both tokens with equivalent
+                value. The other portion calculated by volatility will enter
+                futures contract that commits to swapping the farm token back to
+                a predetermined amount of base tokens in the future. One
+                intriguing fact from the function is that it enables both
+                transaction and hedging at one transaction.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <img src={home4} />
+          </div>
+        </div>
+
+        <div className="flex flex-row items-center mb-10">
+          <div>
+            <img src={home5} />
+          </div>
+          <div>
+            <div className="flex flex-col items-center justify-center">
+              <h1 className="text-[36px] mb-2 text-primary-700 font-bold">
+                AMM Integration
+              </h1>
+              <p className="text-primary-900 w-[600px]">
+                Defutures is fully flexible as it welcomes multiple chains and
+                layers, and to DeFi protocols with an existing AMM. It is
+                structured to focus solely on providing low-risk investment
+                products to the user, and at the same time guaranteeing constant
+                profits. Therefore being designed in a simple, straightforward
+                manner, scalability throughout the entire blockchain system is
+                relatively easily drawn.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-row items-center mb-10">
+          <div>
+            <div className="flex flex-col items-center justify-center">
+              <h1 className="text-[36px] mb-2 text-primary-700 font-bold">
+                Market stabilizer
+              </h1>
+              <p className="text-primary-900 w-[600px]">
+                Positions from both ends when placed together, this impacts the
+                whole market to stabilize prize fluctuations as it will act as
+                key axis throughout the duration. In other words, more positions
+                the more impact it will strive the market, creating a firm
+                market price dome reaching stability preventing price sudden
+                peaks. This powerful feature is expected to reach high demands
+                as users tend to look for stable, safe products to invest in.
               </p>
             </div>
           </div>
 
           <div>
             <img src={home3} />
-          </div>
-        </div>
-
-        <div className="flex flex-row items-center mb-10">
-          <div>
-            <img src={home4} />
-          </div>
-          <div>
-            <div className="flex flex-col items-center justify-center">
-              <h1 className="text-[36px] mb-2 text-primary-700 font-bold">
-                Friendly UX
-              </h1>
-              <p className="text-primary-900 w-[600px]">
-                Our service provides a user-friendly interface, allowing users
-                to easily enter into futures contracts and invest assets. It
-                also clearly explains the terms of the futures contract and
-                makes it easy for investors to understand.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex flex-row items-center mb-10">
-          <div>
-            <div className="flex flex-col items-center justify-center">
-              <h1 className="text-[36px] mb-2 text-primary-700 font-bold">
-                Full decentralization
-              </h1>
-              <p className="text-primary-900 w-[600px]">
-                Unlike existing order book based futures exchanges, trading is
-                handled in a decentralized way. This guarantees security and
-                transparency, and enables free trade with few intermediary fees
-                or restrictions.
-              </p>
-            </div>
-          </div>
-
-          <div>
-            <img src={home5} />
           </div>
         </div>
       </div>
