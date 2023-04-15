@@ -25,8 +25,8 @@ const CHAINS: { [chainId in CHAINID]: ChainData } = {
     defuture: {
       defaultTokens: ["ETH", "USDC"],
       dexName: "UniSwap V2",
-      router: "0xc8e6f1dd0e1BC404AEe050f76c46f92FDc77AF6c",
-      dexRouter: "0xdcb935a02E5CA14c6ef8478EbC1682f208fC758D"
+      router: "0x05d0f5fd55ECa03F338C6cf71Ac1Af1e30e12a21",
+      dexRouter: "0x837C6C82b036B3b42D55307112A6e665794A3297"
     }
   },
 };

@@ -8,7 +8,6 @@ import { getStrikeAmount } from "utils/uniswap-lib";
 
 // const { chainId } = useWallet();
 export const useFuture = () => {
-  // TODO: chainId
   const { chainId } = useWallet();
   const chain = Chain.get(chainId);
   const tokenList = Token.fromChain(chainId);

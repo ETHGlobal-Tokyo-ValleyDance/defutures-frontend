@@ -127,6 +127,7 @@ export const HedgeModal = ({
             <div className="absolute inset-0 bg-black/40 rounded-lg flex-center flex-col">
               <AiOutlineLoading3Quarters
                 size={40}
+                color="white"
                 className="mb-4 animate-spin "
               />
               {step === Step.Approve ? (

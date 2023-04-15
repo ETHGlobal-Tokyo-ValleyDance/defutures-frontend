@@ -19,7 +19,7 @@ export const FutureModal = ({
   close,
   futures: { shortToken, longToken, margin, totalSupply, longAmount, shortAmount },
 }: FutureModalProps) => {
-  const [step, setStep] = useState<Step>(Step.Approve);
+  const [step, setStep] = useState<Step>(Step.Buy);
   const { signer, account } = useSigner();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -34,8 +34,10 @@ export const FutureModal = ({
         .connect(signer)
         .approve(shortToken.getChain().defuture.router, parseEther(margin));
       await tx.wait();
+
       setStep(Step.Buy);
-    } catch {
+    } catch (e){
+      console.log(e)
     } finally {
       setIsLoading(false);
     }
@@ -60,6 +62,8 @@ export const FutureModal = ({
           ethers.constants.MaxUint256
         );
       const rec = await tx.wait();
+
+      console.log(JSON.stringify(rec));
       setStep(Step.Done);
     } catch {
     } finally {
@@ -121,23 +125,24 @@ export const FutureModal = ({
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="w-[300px] h-[360px] pr-4">
+        <div className="relative w-[300px] h-[360px] mr-4">
           {isLoading && (
-            <div className="absolute inset-0 bg-black/20 rounded-lg flex-center flex-col">
+            <div className="absolute inset-0 bg-black/30 rounded-lg flex-center flex-col">
               <AiOutlineLoading3Quarters
                 size={40}
+                color="white"
                 className="mb-4 animate-spin "
               />
               {step === Step.Approve ? (
                 <div className="mt-4 flex animate-bounce">
-                  <p className="text-2xl text-center font-semibold text-neutral-700">
+                  <p className="text-2xl text-center font-semibold text-white">
                     Approving {shortToken.symbol}
                   </p>
                   <TokenIcon className="ml-2" token={shortToken} />
                 </div>
               ) : step === Step.Buy ? (
                 <div className="mt-4 flex animate-bounce">
-                  <p className="text-2xl text-center font-semibold text-neutral-700">
+                  <p className="text-2xl text-center font-semibold text-white">
                     Pending Transaction...
                   </p>
                 </div>
