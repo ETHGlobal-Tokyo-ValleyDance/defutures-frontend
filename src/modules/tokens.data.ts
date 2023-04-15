@@ -39,7 +39,7 @@ const TOKENS: TokenData[] = [
     symbol: "USDC",
     address: "0x826e7E00D66F55B3Cf0c1f13F07af3A71559E0Ab",
     isWrappedToken: false,
-    imgUrl: "",
+    imgUrl: usdc,
   },
   {
     chainId: CHAINID.Baobab,
@@ -48,7 +48,7 @@ const TOKENS: TokenData[] = [
     symbol: "DOGE",
     address: "0x4dF7E30B763e1B3C2B0552940E2Fb952404a1aC5",
     isWrappedToken: false,
-    imgUrl: "",
+    imgUrl: doge,
   },
   {
     chainId: CHAINID.Baobab,
