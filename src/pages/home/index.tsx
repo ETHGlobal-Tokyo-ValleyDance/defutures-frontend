@@ -16,16 +16,16 @@ import { SiHiveBlockchain } from "react-icons/si";
 
 const Home = () => {
   const plans = [
-    { id: 1, title: "Q2 2023", content: "Product launch", detail: "detail" },
+    { id: 1, title: "Jun 2023", content: "Product launch", detail: "detail" },
     {
       id: 2,
-      title: "Q4 2023",
+      title: "Aug 2023",
       content: "Expanding to new markets",
       detail: "detail",
     },
     {
       id: 3,
-      title: "Q2 2024",
+      title: "Jan 2024",
       content: "Release of new features",
       detail: "detail",
     },
@@ -292,14 +292,14 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="flex bg-primary-50 p-24 w-full justify-center items-center">
-        <div className="bg-gray-100 py-16">
+      <div className="flex bg-primary-50 p-20 w-full justify-center items-center">
+        <div className="bg-gray-100 py-4">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="lg:text-center">
-              <h2 className="text-base text-primary-500 font-semibold tracking-wide uppercase">
-                Roadmap
-              </h2>
-              <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-primary-500 sm:text-4xl">
+              <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-primary-500 text-shadow-gray sm:text-4xl">
+                RoadMap
+              </p>
+              <p className="mt-2 text-xl leading-8 tracking-tight text-primary-500 sm:text-4xl">
                 Our Future Plans
               </p>
             </div>
@@ -312,7 +312,7 @@ const Home = () => {
                 >
                   <div className="flex items-center">
                     <div className="flex-shrink-0">
-                      <div className="flex items-center justify-center h-12 w-12 rounded-md bg-primary-500 text-white">
+                      <div className="flex items-center justify-center h-12 w-12 p-8 rounded-md bg-primary-500 text-white">
                         {plan.title}
                       </div>
                     </div>
