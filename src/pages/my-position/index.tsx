@@ -13,6 +13,11 @@ const MockAssets = [
     LP: "12.121",
     Futures: "Long Short",
   },
+  {
+    pair: "uniswapv2USDC - ETH",
+    LP: "12.121",
+    Futures: "Long Short",
+  },
 ];
 const MyPosition = () => {
   return (
@@ -23,17 +28,15 @@ const MyPosition = () => {
           <p> LP Balance </p>
           <p> Futures </p>
         </div>
-        <PositionBox />
-
-        <div className="h-16 ">
-          <div className="flex-1 flex-center text-center">
-            <img src={Usdcsvg} />
-            <img src={Ethsvg} />
-            UniswapV2 USDC + ETH
-          </div>
-          <div className="flex-1 flex-center text-center">120.98LP</div>
-          <div className="flex-1 flex-center text-center">LONG SHORT</div>
-        </div>
+        {MockAssets.map((asset) => {
+          return (
+            <PositionBox
+              pair={asset.pair}
+              lp={asset.LP}
+              futures={asset.Futures}
+            />
+          );
+        })}
       </div>
     </div>
   );

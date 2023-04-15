@@ -2,6 +2,7 @@ import { CHAINID, TokenData } from "interfaces/config-data.interface";
 import usdc from "../assets/token/usdcSvg.svg";
 import doge from "../assets/token/dogeSvg.svg";
 import usdt from "../assets/token/usdtSvg.svg";
+import val from "../assets/token/valSvg.svg";
 
 const TOKENS: TokenData[] = [
   {
@@ -57,7 +58,7 @@ const TOKENS: TokenData[] = [
     symbol: "VAL",
     address: "0x12a380C04084454664cE5FF155319C8640164c60",
     isWrappedToken: false,
-    imgUrl: "",
+    imgUrl: val,
   },
 ];
 
