@@ -60,7 +60,6 @@ export const FutureModal = ({
           ethers.constants.MaxUint256
         );
       const rec = await tx.wait();
-      console.log(JSON.stringify(rec));
       setStep(Step.Done);
     } catch {
     } finally {

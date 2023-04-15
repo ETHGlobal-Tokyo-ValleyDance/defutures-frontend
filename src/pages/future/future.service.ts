@@ -1,32 +1,10 @@
-import { BigNumber, utils } from "ethers";
-import { parseEther } from "ethers/lib/utils";
-import { CHAINID } from "interfaces/config-data.interface";
+import { utils } from "ethers";
 import { Chain } from "modules/Chain";
 import { Token } from "modules/Token";
 import { useEffect, useMemo, useState } from "react";
 import { useWallet } from "states/wallet.state";
+import { FutureMarketInfo, futureMarketInfo } from "streams/futureMarketInfo";
 import { getStrikeAmount } from "utils/uniswap-lib";
-
-const mockContract = async (
-  tokenA: Token,
-  tokenB: Token
-): Promise<FutureMarket> => {
-  return {
-    leadingBuy: parseEther("10000"),
-    leadingSell: parseEther("8000"),
-    minMarginBps: 1000,
-    totalSupply: 123,
-    lastUpdatedAt: new Date().getTime(),
-  };
-};
-
-interface FutureMarket {
-  leadingBuy: BigNumber;
-  leadingSell: BigNumber;
-  minMarginBps: number;
-  totalSupply: number;
-  lastUpdatedAt: number;
-}
 
 // const { chainId } = useWallet();
 export const useFuture = () => {
@@ -35,7 +13,7 @@ export const useFuture = () => {
   const chain = Chain.get(chainId);
   const tokenList = Token.fromChain(chainId);
 
-  const [futureMarket, setFutureMarket] = useState<FutureMarket | null>(null);
+  const [futureMarket, setFutureMarket] = useState<FutureMarketInfo | null>(null);
 
   // in state, save only token symbol
   // token can be found by chainId & symbol
@@ -75,8 +53,8 @@ export const useFuture = () => {
     const _strikeAmount = shortToken.format(
       getStrikeAmount(
         longValue,
-        futureMarket.leadingBuy,
-        futureMarket.leadingSell
+        futureMarket.leadingA,
+        futureMarket.leadingB
       )
     );
     setShortAmount(_strikeAmount);
@@ -96,7 +74,7 @@ export const useFuture = () => {
   };
 
   const refresh = async () => {
-    mockContract(longToken!, shortToken!).then(setFutureMarket);
+    futureMarketInfo(chainId, longToken!, shortToken!).then(setFutureMarket);
   };
 
   useEffect(() => {

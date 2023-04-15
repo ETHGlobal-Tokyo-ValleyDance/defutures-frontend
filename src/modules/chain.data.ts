@@ -12,8 +12,8 @@ const CHAINS: { [chainId in CHAINID]: ChainData } = {
     defuture: {
       defaultTokens: ["MATIC", "USDC"],
       dexName: "QuickSwap V2",
-      router: "0x48C795467E0a894806F8aaF7dc93061180DA2E20",
-      dexRouter: "0x7500852F01BfA4178f29b56dB20584c6C6DD5571"
+      router: "0xca6D45dD412E740b65A35B8A0F46b478075a119c",
+      dexRouter: "0xcE9B30B0e1E9e5507aD7Da63f4c4Fb871c11dd3f"
     }
   },
   [CHAINID.Scroll]: {
@@ -25,8 +25,8 @@ const CHAINS: { [chainId in CHAINID]: ChainData } = {
     defuture: {
       defaultTokens: ["ETH", "USDC"],
       dexName: "UniSwap V2",
-      router: "0x48C795467E0a894806F8aaF7dc93061180DA2E20",
-      dexRouter: "0xFF99377f0974853a122f85116bb6a63ee42ed60B"
+      router: "0xc8e6f1dd0e1BC404AEe050f76c46f92FDc77AF6c",
+      dexRouter: "0xdcb935a02E5CA14c6ef8478EbC1682f208fC758D"
     }
   },
 };

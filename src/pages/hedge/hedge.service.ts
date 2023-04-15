@@ -4,40 +4,10 @@ import { Chain } from "modules/Chain";
 import { Token } from "modules/Token";
 import { ChangeEventHandler, useEffect, useMemo, useState } from "react";
 import { useWallet } from "states/wallet.state";
+import { FutureMarketInfo, futureMarketInfo } from "streams/futureMarketInfo";
 import { getAmountOut, getStrikeAmount } from "utils/uniswap-lib";
 
-//   tokenA: Token,
-//   tokenB: Token
-const mockContract = async (
-  chainId: number,
-  baseToken: Token,
-  farmToken: Token
-): Promise<HedgeInfo> => {
-  return Chain.get(chainId)
-    .getV2DefutureRouter()
-    .getInfoForHedge(baseToken.address, farmToken.address)
-    .then((res) => {
-      return {
-        reserveBase: res.reserve0,
-        reserveFarm: res.reserve1,
-        leadingBase: res.leading0,
-        leadingFarm: res.leading1,
-        totalSupply: res.totalSupply.toNumber(),
-        minMarginBps: res.minMarginBps.toNumber(),
-        updatedAt: new Date().getTime(),
-      };
-    });
-};
 
-interface HedgeInfo {
-  reserveBase: BigNumber;
-  reserveFarm: BigNumber;
-  leadingBase: BigNumber;
-  leadingFarm: BigNumber;
-  totalSupply: number;
-  minMarginBps: number;
-  updatedAt: number;
-}
 
 // base token: user asset
 // farm token: swapped asset for invest position
@@ -48,7 +18,7 @@ export const useHedge = (minSpotPerc: number) => {
   const chain = Chain.get(chainId);
 
   // Defuture & UniswapPair Infos (reserve0,1, leading0,1 ...)
-  const [hedgeInfo, setHedgeInfo] = useState<HedgeInfo | null>(null);
+  const [hedgeInfo, setHedgeInfo] = useState<FutureMarketInfo | null>(null);
 
   /** USER INPUTS **/
   const [baseSymbol, setBaseSymbol] = useState(chain.defuture.defaultTokens[0]);
@@ -90,8 +60,8 @@ export const useHedge = (minSpotPerc: number) => {
 
     const swappedFarm = getAmountOut(
       baseAmountToSwap,
-      hedgeInfo.reserveBase,
-      hedgeInfo.reserveFarm
+      hedgeInfo.reserveA,
+      hedgeInfo.reserveB
     );
 
     const hedgeQuote = swappedFarm.mul(hedgeAmount).div(baseAmountToSwap);
@@ -101,8 +71,8 @@ export const useHedge = (minSpotPerc: number) => {
     // "strikeAmount" of FARM -> "spotAmount / 2" of BASE
     const strikeAmount = getStrikeAmount(
       spotAmount.div(2),
-      hedgeInfo.leadingFarm,
-      hedgeInfo.leadingBase
+      hedgeInfo.leadingB,
+      hedgeInfo.leadingA
     );
 
     const marginRatio = hedgeQuote.mul(1e4).div(strikeAmount).toNumber() / 100;
@@ -132,7 +102,7 @@ export const useHedge = (minSpotPerc: number) => {
   }, [chainId, baseSymbol, farmSymbol]);
 
   useEffect(() => {
-    mockContract(chainId, baseToken, farmToken).then(setHedgeInfo);
+    futureMarketInfo(chainId, baseToken, farmToken).then(setHedgeInfo);
   }, []);
 
   const onChangeSpotPercent: ChangeEventHandler<HTMLInputElement> = ({

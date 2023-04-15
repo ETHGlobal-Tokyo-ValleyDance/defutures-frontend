@@ -6,7 +6,7 @@ import {
 } from "recoil";
 import { connectMetamask } from "../utils/metamask";
 import { CHAINID } from "interfaces/config-data.interface";
-import { Signer, providers } from "ethers";
+import { providers } from "ethers";
 
 export const accountAtom = atom<string | null>({
   key: "atom/account",
