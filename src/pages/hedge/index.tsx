@@ -32,7 +32,7 @@ const Hedge = () => {
   const { chainId, account } = useWallet();
   const [isModalOpen, openModal, closeModal] = useModal(false);
 
-  const disabled =
+  const isDisabled =
     +tolerance < 0 || !account || marginRatio < minMarginBps / 100;
   const baseTokenBalance = useBalance(baseToken);
   const { dexName } = Chain.get(chainId).defuture;
@@ -226,8 +226,11 @@ const Hedge = () => {
           <div className="flex-1 mt-2 flex-center">
             <button
               onClick={openModal}
-              disabled={disabled}
-              className={cn("btn-lg", disabled ? "btn-secondary" : "btn-primary")}
+              disabled={isDisabled}
+              className={cn(
+                "btn-lg",
+                isDisabled ? "bg-neutral-300 text-white" : "btn-primary"
+              )}
             >
               Start to invest Hedged position 🚀
             </button>

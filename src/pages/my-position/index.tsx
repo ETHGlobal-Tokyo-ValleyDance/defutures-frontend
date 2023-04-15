@@ -1,5 +1,3 @@
-import Usdcsvg from "../../assets/token/usdcSvg.svg";
-import Ethsvg from "../../assets/token/ethSvg.svg";
 import PositionBox from "./PositionBox";
 import { chainIds } from "interfaces/config-data.interface";
 
