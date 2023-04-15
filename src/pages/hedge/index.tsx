@@ -31,6 +31,7 @@ const Hedge = () => {
   const [isModalOpen, openModal, closeModal] = useModal(false);
   const disabled = +tolerance < 0;
   const baseTokenBalance = useBalance(baseToken);
+  console.log(baseTokenBalance)
   // TODO
   const dexName = "Uniswap V2";
 

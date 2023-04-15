@@ -6,7 +6,7 @@ const CHAINS: { [chainId in CHAINID]: ChainData } = {
     id: CHAINID.Mumbai,
     name: "Polygon",
     symbol: "MATIC",
-    rpcUrl: "https://rpc-mumbai.maticvigil.com",
+    rpcUrl: "https://rpc.ankr.com/polygon_mumbai",
     imgUrl: polygon,
     defuture: {
       defaultTokens: ["MATIC", "USDC"],

@@ -1,6 +1,5 @@
 import { BigNumber } from "ethers";
 import { formatEther, parseEther } from "ethers/lib/utils";
-import { CHAINID } from "interfaces/config-data.interface";
 import { Chain } from "modules/Chain";
 import { Token } from "modules/Token";
 import { ChangeEventHandler, useEffect, useMemo, useState } from "react";
@@ -97,8 +96,6 @@ export const useHedge = (minSpotPerc: number) => {
       hedgeInfo.leadingFarm,
       hedgeInfo.leadingBase
     );
-    console.log("strikeAmount", formatEther(strikeAmount));
-    console.log("futureAmount", formatEther(spotAmount.div(2)));
 
     const marginRatio = hedgeQuote.mul(1e4).div(strikeAmount).toNumber() / 100;
 

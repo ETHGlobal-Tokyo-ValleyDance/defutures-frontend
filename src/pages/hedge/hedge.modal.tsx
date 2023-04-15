@@ -15,7 +15,7 @@ export const HedgeModal = ({
   close,
   hedges: { totalSupply, baseToken, farmToken, totalAmount, spotPercent },
 }: HedgeModalProps) => {
-  const signer = useSigner();
+  const {signer, account} = useSigner();
   const total = parseEther(totalAmount);
   const [step, setStep] = useState<Step>(Step.Approve);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -50,7 +50,7 @@ export const HedgeModal = ({
         .addLiquidityHedged(
           baseToken.address,
           farmToken.address,
-          signer._address,
+          account!,
           spot,
           total.sub(spot)
         );

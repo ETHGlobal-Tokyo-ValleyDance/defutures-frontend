@@ -17,7 +17,7 @@ export const FutureModal = ({
   futures: { shortToken, longToken, margin, totalSupply, longAmount },
 }: FutureModalProps) => {
   const [step, setStep] = useState<Step>(Step.Approve);
-  const signer = useSigner();
+  const { signer, account } = useSigner();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const approve = async () => {
@@ -51,7 +51,7 @@ export const FutureModal = ({
         .addPosition(
           longToken.address,
           shortToken.address,
-          signer._address,
+          account!,
           longToken.parse(longAmount),
           shortToken.parse(margin),
           ethers.constants.MaxUint256
