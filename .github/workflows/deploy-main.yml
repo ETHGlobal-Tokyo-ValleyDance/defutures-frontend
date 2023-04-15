@@ -37,7 +37,7 @@ jobs:
 
       - name: Build Static Site
         run: |
-          npm run export
+          npm run build
 
       - name: Deploy to S3
         env:
