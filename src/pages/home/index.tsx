@@ -69,7 +69,7 @@ const Home = () => {
         <div className="flex flex-row ">
           <div className="flex items-center flex-col m-16">
             <AiFillCloseCircle className="text-primary-500 text-5xl mb-3" />
-            <h2 className="text-primary-700 mb-6 font-bold">
+            <h2 className="text-primary-700 mb-6 text-xl font-bold">
               {" "}
               Poor Accessibility
             </h2>
@@ -81,7 +81,7 @@ const Home = () => {
           </div>
           <div className="flex  items-center flex-col m-16">
             <CgDanger className="text-primary-500 text-5xl mb-3" />
-            <h2 className="text-primary-700 mb-6 font-bold">Risk</h2>
+            <h2 className="text-primary-700 mb-6 text-xl font-bold">Risk</h2>
             <div className=" text-center text-gray-600 w-48">
               Users who invest in DEX in order to achieve high returns must
               invest in a pool of mainstream and non-mainstream tokens. However,
@@ -92,7 +92,7 @@ const Home = () => {
           </div>
           <div className="flex  items-center flex-col m-16 ">
             <SiHiveBlockchain className="text-primary-500 text-5xl mb-3" />
-            <h2 className="text-primary-700 mb-6 font-bold">
+            <h2 className="text-primary-700 mb-6 text-xl font-bold">
               Not fully decentralized
             </h2>
             <div className=" text-center text-gray-600 w-48">
