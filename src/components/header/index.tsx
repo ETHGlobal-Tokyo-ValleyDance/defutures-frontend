@@ -4,9 +4,11 @@ import { useConnectWallet } from "states/wallet.state";
 import { ellipsisAddress } from "utils";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/Logo.png";
+import { Chain } from "modules/Chain";
 
 const Header = () => {
   const { account, chainId, connect, disconnect } = useConnectWallet();
+  const chain = Chain.get(chainId);
 
   const onDisconnect = () => {
     if (confirm("Disconnect Wallet?")) disconnect();
@@ -19,15 +21,21 @@ const Header = () => {
           <img src={Logo} className="w-60 " />
         </Link>
 
-        {account ? (
-          <button className="btn btn-secondary" onClick={onDisconnect}>
-            {ellipsisAddress(account)}
-          </button>
-        ) : (
-          <button className="btn btn-primary" onClick={connect}>
-            Connect
-          </button>
-        )}
+        <div className="flex items-center">
+          <p className="font-bold mt-1">{chain.name}</p>
+          <div className="rounded-lg shadow-lg bg-neutral-50 hover:bg-neutral-100 w-[42px] h-[42px] flex-center mx-4">
+            <img src={chain.imgUrl} className="w-6 h-6" />
+          </div>
+          {account ? (
+            <button className="btn btn-secondary" onClick={onDisconnect}>
+              {ellipsisAddress(account)}
+            </button>
+          ) : (
+            <button className="btn btn-primary" onClick={connect}>
+              Connect
+            </button>
+          )}
+        </div>
       </div>
       <div className="flex mt-2 px-40">
         <NavItem content="Home" path={ROUTES.HOME} />

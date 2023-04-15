@@ -7,6 +7,7 @@ import {
 import { connectMetamask } from "../utils/metamask";
 import { CHAINID } from "interfaces/config-data.interface";
 import { providers } from "ethers";
+import { useNavigate } from "react-router-dom";
 
 export const accountAtom = atom<string | null>({
   key: "atom/account",
@@ -32,10 +33,11 @@ export const useConnectWallet = () => {
   const [account, setAccount] = useRecoilState(accountAtom);
   const [chainId, setChainId] = useRecoilState(chainIdAtom);
   const resetChainId = useResetRecoilState(chainIdAtom);
+  const nav = useNavigate();
 
   const connect = async () => {
     const res = await connectMetamask(chainId);
-    if (!res || !res.ok) return (location.href = "/");
+    if (!res || !res.ok) return nav('/');
 
     setAccount(res!.account);
     setChainId(res!.chainId);
@@ -45,6 +47,16 @@ export const useConnectWallet = () => {
     setAccount(null);
     resetChainId();
   };
+
+  //@ts-ignore
+  window.ethereum?.on("accountsChanged",(accounts: string[]) => {
+    setAccount(accounts[0] ?? null)
+  });
+  //@ts-ignore
+  window.ethereum?.on("chainChanged",(chainId: string) => {
+    setChainId(+chainId)
+    nav('/')
+  });
 
   return {
     account,

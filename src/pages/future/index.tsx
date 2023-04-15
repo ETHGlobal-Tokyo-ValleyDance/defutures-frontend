@@ -25,8 +25,8 @@ const Future = () => {
 
   const [isModalOpen, openModal, closeModal] = useModal(false);
   const marginRatio = Math.floor((1e4 * +margin) / +shortAmount) / 100 || 0;
-  const isMarginShortage = marginRatio > 0 && marginRatio < minMarginRatio;
-  const isDisabled = !shortAmount && !isMarginShortage;
+  const isMarginShortage = marginRatio >= 0 && marginRatio < minMarginRatio;
+  const isDisabled = !shortAmount || isMarginShortage;
 
   return (
     <div className="px-24 py-12 flex">
@@ -170,8 +170,7 @@ const Future = () => {
                 isDisabled ? "bg-neutral-300 text-white" : "btn-primary"
               )}
             >
-              Start to invest {shortToken.symbol} → {longToken.symbol} DeFuture
-              🚀
+              Start to invest {shortToken.symbol} → {longToken.symbol} DeFuture 🚀
             </button>
           </div>
         </div>

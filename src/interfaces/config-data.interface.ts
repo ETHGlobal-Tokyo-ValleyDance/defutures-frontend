@@ -2,11 +2,17 @@ export enum CHAINID {
   /** TESTNET **/
   Mumbai = 80001, // polygon
   Scroll = 534353,
+  Linea = 59140, 
+  Celo = 44787,
+  Taiko = 167002,
 }
 
 export const chainIds = [
   CHAINID.Mumbai,
   CHAINID.Scroll,
+  CHAINID.Linea,
+  CHAINID.Celo,
+  CHAINID.Taiko,
 ]
 
 

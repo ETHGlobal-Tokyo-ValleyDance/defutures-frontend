@@ -17,7 +17,14 @@ interface FutureModalProps {
 
 export const FutureModal = ({
   close,
-  futures: { shortToken, longToken, margin, totalSupply, longAmount, shortAmount },
+  futures: {
+    shortToken,
+    longToken,
+    margin,
+    totalSupply,
+    longAmount,
+    shortAmount,
+  },
 }: FutureModalProps) => {
   const [step, setStep] = useState<Step>(Step.Buy);
   const { signer, account } = useSigner();
@@ -36,8 +43,8 @@ export const FutureModal = ({
       await tx.wait();
 
       setStep(Step.Buy);
-    } catch (e){
-      console.log(e)
+    } catch (e) {
+      console.log(e);
     } finally {
       setIsLoading(false);
     }
@@ -61,9 +68,7 @@ export const FutureModal = ({
           shortToken.parse(margin),
           ethers.constants.MaxUint256
         );
-      const rec = await tx.wait();
-
-      console.log(JSON.stringify(rec));
+      await tx.wait();
       setStep(Step.Done);
     } catch {
     } finally {
@@ -160,28 +165,35 @@ export const FutureModal = ({
             )}
           >
             <div className="flex items-center">
-                <span className="chip-sm chip-neutral font-semibold">
+              <span className="chip-sm chip-neutral font-semibold">
                 #{totalSupply + 1}
-                </span>
-                {step === Step.Done && (
-                    <BsFillCheckCircleFill size={16} className="ml-1.5 text-green-600" />
-                )}
+              </span>
+              {step === Step.Done && (
+                <BsFillCheckCircleFill
+                  size={16}
+                  className="ml-1.5 text-green-600"
+                />
+              )}
             </div>
 
             <div className="flex-1 flex-col flex-center mb-2">
-                <span className="chip chip-blue mb-2">Base</span>
-                <div className="flex items-center">
-                    <TokenIcon token={shortToken}/>
-                    <p className="ml-2 text-2xl">{shortAmount} {shortToken.symbol}</p>
-                </div>
+              <span className="chip chip-blue mb-2">Base</span>
+              <div className="flex items-center">
+                <TokenIcon token={shortToken} />
+                <p className="ml-2 text-2xl">
+                  {shortAmount} {shortToken.symbol}
+                </p>
+              </div>
 
-                <p className="font-extrabold text-2xl my-4">↓</p>
+              <p className="font-extrabold text-2xl my-4">↓</p>
 
-                <span className="chip chip-primary mb-2">Farm</span>
-                <div className="flex items-center">
-                    <TokenIcon token={longToken}/>
-                    <p className="ml-2 text-2xl">{longAmount} {longToken.symbol}</p>
-                </div>
+              <span className="chip chip-primary mb-2">Farm</span>
+              <div className="flex items-center">
+                <TokenIcon token={longToken} />
+                <p className="ml-2 text-2xl">
+                  {longAmount} {longToken.symbol}
+                </p>
+              </div>
             </div>
           </div>
         </div>

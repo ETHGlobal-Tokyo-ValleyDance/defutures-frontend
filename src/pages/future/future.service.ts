@@ -12,7 +12,9 @@ export const useFuture = () => {
   const chain = Chain.get(chainId);
   const tokenList = Token.fromChain(chainId);
 
-  const [futureMarket, setFutureMarket] = useState<FutureMarketInfo | null>(null);
+  const [futureMarket, setFutureMarket] = useState<FutureMarketInfo | null>(
+    null
+  );
 
   // in state, save only token symbol
   // token can be found by chainId & symbol
@@ -50,11 +52,7 @@ export const useFuture = () => {
     const longValue = utils.parseEther(value);
     setLongAmount(value);
     const _strikeAmount = shortToken.format(
-      getStrikeAmount(
-        longValue,
-        futureMarket.leadingA,
-        futureMarket.leadingB
-      )
+      getStrikeAmount(longValue, futureMarket.leadingA, futureMarket.leadingB)
     );
     setShortAmount(_strikeAmount);
 
@@ -62,7 +60,8 @@ export const useFuture = () => {
       +margin < (+_strikeAmount * futureMarket.minMarginBps) / 1e4 ||
       +margin > +_strikeAmount
     ) {
-      setMargin("" + Math.floor(+_strikeAmount * 2e3) / 1e4);
+      // +10 => buffer
+      setMargin("" + Math.floor(+_strikeAmount * (2e3 + 5)) / 1e4);
     }
   };
 
