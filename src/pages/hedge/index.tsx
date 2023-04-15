@@ -115,6 +115,7 @@ const Hedge = () => {
           </label>
           <div className="flex justify-between mb-3">
             <div className="chip-sm chip-purple">Min {MIN_SPOT_PERCENT}%</div>
+            <div className="chip-sm chip-primary">Current: {spotPercent}%</div>
             <div className="chip-sm chip-purple">Max 100%</div>
           </div>
           <input
@@ -138,7 +139,7 @@ const Hedge = () => {
               <b className="text-primary-700">
                 {spotAmount} {baseToken.symbol}{" "}
               </b>
-              will be allocated to {dexName}
+              will be allocated to {dexName} {baseToken.symbol}+{farmToken.symbol}
               <br />• remaining{" "}
               <b className="text-primary-700">
                 {(1000 * +totalAmount - spotAmount * 1000) / 1000}{" "}
@@ -210,7 +211,7 @@ const Hedge = () => {
 
           <div className="flex-1 mt-2 flex-center">
             <button className="btn-lg btn-primary">
-              Start to invest Hedged position 🎉
+              Start to invest Hedged position 🚀
             </button>
           </div>
         </div>

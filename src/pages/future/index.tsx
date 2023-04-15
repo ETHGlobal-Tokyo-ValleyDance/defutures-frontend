@@ -167,7 +167,7 @@ const Future = () => {
                 isDisabled ? "bg-neutral-300 text-white" : "btn-primary"
               )}
             >
-              Invest {shortToken.symbol} → {longToken.symbol} DeFuture
+              Start to invest {shortToken.symbol} → {longToken.symbol} DeFuture 🚀
             </button>
           </div>
         </div>
