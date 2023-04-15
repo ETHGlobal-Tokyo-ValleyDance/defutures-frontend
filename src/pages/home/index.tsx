@@ -7,6 +7,7 @@ import jiho from "../../assets/home/profile/jiho.png";
 import jihwan from "../../assets/home/profile/jihwan.jpeg";
 import suha from "../../assets/home/profile/suha.jpeg";
 import sooyoung from "../../assets/home/profile/sooyoung.jpeg";
+import jakyung from "../../assets/home/profile/jakyung.jpg";
 import Profile from "./Profile";
 import { Link } from "react-router-dom";
 import { AiFillCloseCircle } from "react-icons/ai";
@@ -243,7 +244,7 @@ const Home = () => {
             <div className="flex items-center justify-between mt-24">
               <Profile
                 img={suha}
-                role={"Contract Dev"}
+                role={"Contract Developer"}
                 name={"Suha Jin"}
                 link={"https://github.com/djm07073"}
               />
@@ -255,7 +256,7 @@ const Home = () => {
               />
               <Profile
                 img={jihwan}
-                role={"Contract Dev"}
+                role={"Contract Developer"}
                 name={"Jihwan An"}
                 link={"https://github.com/winterjihwan"}
               />
@@ -263,14 +264,14 @@ const Home = () => {
             <div className="flex mt-10 justify-around">
               <Profile
                 img={jiho}
-                role={"FrontEnd Dev"}
+                role={"Frontend Developer"}
                 name={"JiHo Lee"}
                 link={"https://github.com/mangming2"}
               />
 
               <Profile
-                img={home1}
-                role={"BackEnd Dev"}
+                img={jakyung}
+                role={"Backend Developer"}
                 name={"Jakyung Koo"}
                 link={"https://github.com/lawkelvin33"}
               />

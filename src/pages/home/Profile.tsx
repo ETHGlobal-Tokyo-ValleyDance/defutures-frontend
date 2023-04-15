@@ -1,3 +1,4 @@
+import { IoLogoGithub } from "react-icons/io";
 interface ProfileProps {
   img: string;
   role: string;
@@ -8,13 +9,13 @@ interface ProfileProps {
 const Profile = ({ img, role, name, link }: ProfileProps) => {
   return (
     <a href={`${link}`} target="_blank">
-      <div className="flex flex-row items-center">
+      <div className="flex items-center border-[0.5px] p-4 pr-8 rounded-lg hover:shadow-lg">
         <img src={img} className="w-32 h-32 rounded-full object-cover " />
-        <div>
-          <h2 className="text-base ml-2 text-primary-400 font-semibold tracking-wide uppercase">
+        <div className="ml-4">
+          <p className="text-primary-400 font-semibold">
             {role}
-          </h2>
-          <p>{name}</p>
+          </p>
+          <p className="font-semibold">{name}</p>
         </div>
       </div>
     </a>
