@@ -29,7 +29,7 @@ interface FutureMarket {
 // const { chainId } = useWallet();
 export const useFuture = () => {
   // TODO: chainId
-  const chainId = CHAINID.LOCAL;
+  const chainId = CHAINID.Baobab;
   const tokenList = Token.fromChain(chainId);
 
   const [futureMarket, setFutureMarket] = useState<FutureMarket | null>(null);

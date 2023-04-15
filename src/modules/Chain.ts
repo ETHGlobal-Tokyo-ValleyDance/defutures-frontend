@@ -1,6 +1,8 @@
 import { Contract, providers } from "ethers";
 import { CHAINID, ChainData } from "interfaces/config-data.interface";
 import CHAINS from "./chain.data";
+import UniswapV2DefutureRouterABI from "abi/UniswapV2DefutureRouter.json"
+import { UniswapV2DefutureRouter } from "typechain";
 
 export class Chain implements ChainData {
   id!: CHAINID;
@@ -37,13 +39,11 @@ export class Chain implements ChainData {
     else throw Error(`Chain ${chainId} not found`);
   }
 
-  getV2DefutureRouter() {
+  getV2DefutureRouter(): UniswapV2DefutureRouter {
     return new Contract(
       this.defuture.router,
-      [],
-      // TODO
-      // UniswapV2DefutureRouterABI,
+      UniswapV2DefutureRouterABI,
       this.getProvider()
-    );
+    ) as UniswapV2DefutureRouter;
   }
 }

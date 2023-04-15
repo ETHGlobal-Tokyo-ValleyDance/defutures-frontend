@@ -18,13 +18,13 @@ const CHAINS: { [chainId in CHAINID]: ChainData } = {
     id: CHAINID.Baobab,
     name: "Klaytn",
     symbol: "KLAY",
-    rpcUrl: "",
+    rpcUrl: "https://public-en-baobab.klaytn.net",
     // TODO
     imgUrl: "",
     defuture: {
       dexName: "Klayswap",
-      router: "",
-      dexRouter: ""
+      router: "0xF38629F9046be0efb785137F74a041C8547122e8",
+      dexRouter: "0x4B9E4e5C53aBA6978157d6aB8e09D0B64aE4F5AE"
     }
   },
 

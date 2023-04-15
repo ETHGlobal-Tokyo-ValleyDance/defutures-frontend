@@ -1,10 +1,13 @@
 import { TokenSelector } from "components/common/TokenSelector";
 import { useHedge } from "./hedge.service";
 import { NumberInput } from "components/common/NumberInput";
-import { cn } from "utils";
+import { cn, useModal } from "utils";
+import { HedgeModal } from "./hedge.modal";
 
 const MIN_SPOT_PERCENT = 60;
 const Hedge = () => {
+
+  const hedges = useHedge(MIN_SPOT_PERCENT);
   const {
     totalAmount,
     spotPercent,
@@ -21,8 +24,9 @@ const Hedge = () => {
     setFarmSymbol,
     setTotalAmount,
     onChangeSpotPercent,
-  } = useHedge(MIN_SPOT_PERCENT);
+  } = hedges;
 
+  const [isModalOpen, openModal, closeModal] = useModal(false);
   const disabled = +tolerance < 0;
   const baseTokenBalance = 0;
   // TODO
@@ -219,12 +223,13 @@ const Hedge = () => {
           </div>
 
           <div className="flex-1 mt-2 flex-center">
-            <button className="btn-lg btn-primary">
+            <button onClick={openModal} className="btn-lg btn-primary">
               Start to invest Hedged position 🚀
             </button>
           </div>
         </div>
       </div>
+      {isModalOpen && (<HedgeModal close={closeModal} hedges={hedges} />)}
     </div>
   );
 };

@@ -23,7 +23,7 @@ export const NavItem = ({ content, path, badge }: NavItemProps) => {
         <p
           className={cn(
             "font-lg",
-            activated ? "font-semibold" : "font-light text-neutral-400"
+            activated ? "font-semibold" : "text-neutral-400"
           )}
         >
           {content}

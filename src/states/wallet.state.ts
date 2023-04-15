@@ -5,6 +5,8 @@ import {
   useResetRecoilState,
 } from "recoil";
 import { connectMetamask } from "../utils/metamask";
+import { CHAINID } from "interfaces/config-data.interface";
+import { providers } from "ethers";
 
 export const accountAtom = atom<string | null>({
   key: "atom/account",
@@ -14,7 +16,7 @@ export const accountAtom = atom<string | null>({
 export const chainIdAtom = atom<number>({
   key: "atom/chainId",
   // TODO: CHANGE DEFAULT CHAIN ID
-  default: 1,
+  default: CHAINID.Baobab,
 });
 
 export const useWallet = () => {
@@ -50,4 +52,11 @@ export const useConnectWallet = () => {
     connect,
     disconnect,
   };
+};
+
+export const useSigner = () => {
+  const account = useRecoilValue(accountAtom);
+  if (!account || !window.ethereum) return null;
+  // @ts-ignore
+  return new providers.Web3Provider(window.ethereum!).getSigner();
 };
