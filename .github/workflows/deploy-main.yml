@@ -1,0 +1,55 @@
+name: Deploy Production Web
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.18.1
+
+      - name: Cache Node Modules
+        id: cache-npm
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Typechain Setting
+        run: npm run typechain
+
+      - name: Build Static Site
+        run: |
+          npm run build
+
+      - name: Deploy to S3
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: aws s3 cp --recursive --region ap-northeast-1 dist s3://eth-tokyo-defutures
+
+      # - name: Invalidate CloudFront
+      #   uses: chetan/invalidate-cloudfront-action@v2
+      #   env:
+      #     DISTRIBUTION: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID_PROD }}
+      #     PATHS: '/*'
+      #     AWS_REGION: 'ap-northeast-1'
+      #     AWS_ACCESS_KEY_ID: ${{ secrets.DEFI_GENERAL_AWS_ACCESS_KEY_ID }}
+      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.DEFI_GENERAL_AWS_SECRET_ACCESS_KEY }}

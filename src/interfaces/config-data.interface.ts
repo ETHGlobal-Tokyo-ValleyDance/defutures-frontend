@@ -1,8 +1,6 @@
 export enum CHAINID {
   /** TESTNET **/
   Mumbai = 80001, // polygon
-  Baobab = 1001, // KLAYTN
-  LOCAL = 1337
 }
 
 
@@ -13,6 +11,7 @@ export interface ChainData {
   rpcUrl: string;
   imgUrl: string;
   defuture: {
+    defaultTokens: [string, string],
     router: string
     dexName: string
     dexRouter: string

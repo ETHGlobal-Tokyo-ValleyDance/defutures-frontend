@@ -38,8 +38,7 @@ const Future = () => {
           left={
             <TokenSelector
               tokenList={tokenList}
-              selected={longToken.symbol}
-              tokenImg={longToken.imgUrl}
+              selected={longToken}
               onSelect={onLongTokenChange}
             />
           }
@@ -54,8 +53,7 @@ const Future = () => {
           left={
             <TokenSelector
               tokenList={tokenList}
-              selected={shortToken.symbol}
-              tokenImg={shortToken.imgUrl}
+              selected={shortToken}
               onSelect={onShortTokenChange}
             />
           }
@@ -68,11 +66,13 @@ const Future = () => {
         <hr className="my-4" />
         <NumberInput
           left={
-            <div className="px-5 p-2 h-full flex-center border rounded-lg bg-neutral-200">
-              <img src={shortToken.imgUrl} className="w-8 ml-2 mr-2" />
-              <p className="font-semibold pt-1 ml-2 mr-2">
-                {shortToken.symbol}
-              </p>
+            <div className="flex items-center">
+              <img src={shortToken.imgUrl} className="border w-7 h-7 mr-2" />
+              <div className="px-4 p-1 h-full flex-center border rounded-lg bg-neutral-200">
+                <p className="font-semibold">
+                  {shortToken.symbol}
+                </p>
+              </div>
             </div>
           }
           value={margin}

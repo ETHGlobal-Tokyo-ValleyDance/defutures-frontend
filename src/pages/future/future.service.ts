@@ -1,8 +1,10 @@
 import { BigNumber, utils } from "ethers";
 import { parseEther } from "ethers/lib/utils";
 import { CHAINID } from "interfaces/config-data.interface";
+import { Chain } from "modules/Chain";
 import { Token } from "modules/Token";
 import { useEffect, useMemo, useState } from "react";
+import { useWallet } from "states/wallet.state";
 import { getStrikeAmount } from "utils/uniswap-lib";
 
 const mockContract = async (
@@ -29,15 +31,20 @@ interface FutureMarket {
 // const { chainId } = useWallet();
 export const useFuture = () => {
   // TODO: chainId
-  const chainId = CHAINID.Baobab;
+  const { chainId } = useWallet();
+  const chain = Chain.get(chainId);
   const tokenList = Token.fromChain(chainId);
 
   const [futureMarket, setFutureMarket] = useState<FutureMarket | null>(null);
 
   // in state, save only token symbol
   // token can be found by chainId & symbol
-  const [longTokenSymbol, setLongTokenSymbol] = useState("USDC");
-  const [shortTokenSymbol, setShortTokenSymbol] = useState("DOGE");
+  const [longTokenSymbol, setLongTokenSymbol] = useState<string>(
+    chain.defuture.defaultTokens[0]
+  );
+  const [shortTokenSymbol, setShortTokenSymbol] = useState<string>(
+    chain.defuture.defaultTokens[1]
+  );
 
   const [longAmount, setLongAmount] = useState<string>("");
   const [shortAmount, setShortAmount] = useState<string>("");

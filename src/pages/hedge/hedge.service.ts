@@ -1,8 +1,9 @@
 import { BigNumber } from "ethers";
 import { formatEther, parseEther } from "ethers/lib/utils";
-import { CHAINID } from "interfaces/config-data.interface";
+import { Chain } from "modules/Chain";
 import { Token } from "modules/Token";
 import { ChangeEventHandler, useEffect, useMemo, useState } from "react";
+import { useWallet } from "states/wallet.state";
 import { getAmountOut, getStrikeAmount } from "utils/uniswap-lib";
 
 //   tokenA: Token,
@@ -34,15 +35,16 @@ interface HedgeInfo {
 // farm token: swapped asset for invest position
 export const useHedge = (minSpotPerc: number) => {
   // TODO: chainId
-  const chainId = CHAINID.Baobab;
+  const {chainId} = useWallet();
   const tokenList = Token.fromChain(chainId);
+  const chain = Chain.get(chainId);
 
   // Defuture & UniswapPair Infos (reserve0,1, leading0,1 ...)
   const [hedgeInfo, setHedgeInfo] = useState<HedgeInfo | null>(null);
 
   /** USER INPUTS **/
-  const [baseSymbol, setBaseSymbol] = useState("USDC");
-  const [farmSymbol, setFarmSymbol] = useState("DOGE");
+  const [baseSymbol, setBaseSymbol] = useState(chain.defuture.defaultTokens[0]);
+  const [farmSymbol, setFarmSymbol] = useState(chain.defuture.defaultTokens[1]);
 
   // totalAmount of user input base token
   const [totalAmount, setTotalAmount] = useState<string>("1");
@@ -94,8 +96,6 @@ export const useHedge = (minSpotPerc: number) => {
       hedgeInfo.leadingFarm,
       hedgeInfo.leadingBase
     );
-    console.log("strikeAmount", formatEther(strikeAmount));
-    console.log("futureAmount", formatEther(spotAmount.div(2)));
 
     const marginRatio = hedgeQuote.mul(1e4).div(strikeAmount).toNumber() / 100;
 

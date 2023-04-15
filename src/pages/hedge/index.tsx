@@ -3,6 +3,8 @@ import { useHedge } from "./hedge.service";
 import { NumberInput } from "components/common/NumberInput";
 import { cn, useModal } from "utils";
 import { HedgeModal } from "./hedge.modal";
+import { TokenIcon } from "components/common/TokenIcon";
+import { useBalance } from "states/balances.state";
 
 const MIN_SPOT_PERCENT = 60;
 const Hedge = () => {
@@ -28,7 +30,8 @@ const Hedge = () => {
 
   const [isModalOpen, openModal, closeModal] = useModal(false);
   const disabled = +tolerance < 0;
-  const baseTokenBalance = 0;
+  const baseTokenBalance = useBalance(baseToken);
+  console.log(baseTokenBalance)
   // TODO
   const dexName = "Uniswap V2";
 
@@ -54,8 +57,7 @@ const Hedge = () => {
         <div className="flex my-4">
           <TokenSelector
             tokenList={tokenList}
-            selected={baseToken.symbol}
-            tokenImg={baseToken.imgUrl}
+            selected={baseToken}
             onSelect={setBaseSymbol}
           />
         </div>
@@ -67,8 +69,7 @@ const Hedge = () => {
         <div className="flex my-4">
           <TokenSelector
             tokenList={tokenList}
-            selected={farmToken.symbol}
-            tokenImg={farmToken.imgUrl}
+            selected={farmToken}
             onSelect={setFarmSymbol}
           />
         </div>
@@ -83,14 +84,14 @@ const Hedge = () => {
           value={totalAmount}
           onChange={setTotalAmount}
           left={
-            <>
-              <div className="px-5 p-2 h-full flex-center border rounded-lg bg-neutral-200">
-                <img src={baseToken.imgUrl} className="w-8 ml-2" />
-                <p className="font-semibold pt-1 ml-2 mr-2">
+            <div className="flex items-center">
+              <TokenIcon token={baseToken} />
+              <div className="px-4 p-1 h-full flex-center border rounded-lg bg-neutral-200">
+                <p className="font-semibold">
                   {baseToken.symbol}
                 </p>
               </div>
-            </>
+            </div>
           }
           right={
             <button className="btn btn-primary h-full flex-center">Max</button>
