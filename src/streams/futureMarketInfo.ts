@@ -17,7 +17,6 @@ export const futureMarketInfo = async (
   baseToken: Token,
   farmToken: Token
 ): Promise<FutureMarketInfo> => {
-  console.log(baseToken.address, farmToken.address);
   return Chain.get(chainId)
     .getV2DefutureRouter()
     .getFutureMarketInfo(baseToken.address, farmToken.address)

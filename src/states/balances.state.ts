@@ -82,9 +82,6 @@ const fetchBalancesQuery = selector<TokenBalanceInChain>({
           )
         );
       });
-
-      console.log("balanceMap", balanceMap);
-
       return balanceMap;
     }
   },

@@ -9,12 +9,26 @@ import suha from "../../assets/home/profile/suha.jpeg";
 import sooyoung from "../../assets/home/profile/sooyoung.jpeg";
 import jakyung from "../../assets/home/profile/jakyung.jpg";
 import Profile from "./Profile";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigation } from "react-router-dom";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { CgDanger } from "react-icons/cg";
 import { SiHiveBlockchain } from "react-icons/si";
+import { useEffect } from "react";
+import { useRecoilState } from "recoil";
+import { chainIdAtom } from "states/wallet.state";
+import queryString from "query-string";
+import { Chain } from "modules/Chain";
 
 const Home = () => {
+  const [chainId, setChainId] = useRecoilState(chainIdAtom);
+  const location = useLocation();
+
+  useEffect(() => {
+    const p = queryString.parse(location.search);
+    if(!p?.chain) return
+    const match = Chain.getAll().find(c => c.name.toLocaleLowerCase() === p.chain);
+    if(match) setChainId(match.id);
+  }, []);
   const plans = [
     {
       id: 1,

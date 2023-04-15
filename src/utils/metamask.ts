@@ -30,7 +30,7 @@ export const connectMetamask = async (defaultChainId: CHAINID) => {
   });
 
   let ok = true;
-  if (!chainIds.includes(currentChainId)) {
+  if (currentChainId !== defaultChainId) {
     ok = await metamaskSwitchChain(defaultChainId);
   }
   
