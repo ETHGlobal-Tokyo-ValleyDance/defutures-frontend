@@ -11,24 +11,17 @@ const Header = () => {
     <header className="border-b border-b-neutral-300 flex flex-col">
       <div className="h-[75px] px-40 flex justify-between items-center">
         <Link to={ROUTES.HOME}>
-          <p className="font-extrabold text-2xl text-primary-500">
-            DeFutures
-          </p>
+          <p className="font-extrabold text-2xl text-primary-500">DeFutures</p>
         </Link>
 
         {account ? (
-          <div className="flex items-center">
-            <div className="mr-2 ">Connected to {ellipsisAddress(account)}</div>
-            <button className="btn btn-primary" onClick={disconnect}>
-              Disconnect
-            </button>
-          </div>
+          <button className="btn btn-secondary" onClick={disconnect}>
+            {ellipsisAddress(account)}
+          </button>
         ) : (
-          <div>
             <button className="btn btn-primary" onClick={connect}>
               Connect
             </button>
-          </div>
         )}
       </div>
       <div className="flex mt-2 px-40">

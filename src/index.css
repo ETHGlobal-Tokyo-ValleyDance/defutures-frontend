@@ -48,7 +48,7 @@
 }
 
 .chip {
-  @apply px-4 py-1 rounded-lg bg-neutral-200;
+  @apply px-4 pt-[3px] rounded-lg bg-neutral-200;
 }
 
 .chip-sm {
