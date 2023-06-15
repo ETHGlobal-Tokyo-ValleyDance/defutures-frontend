@@ -2,9 +2,10 @@ export enum CHAINID {
   /** TESTNET **/
   Mumbai = 80001, // polygon
   Scroll = 534353,
-  Linea = 59140, 
+  Linea = 59140,
   Celo = 44787,
   Taiko = 167002,
+  Goerli = 5,
 }
 
 export const chainIds = [
@@ -13,8 +14,7 @@ export const chainIds = [
   CHAINID.Linea,
   CHAINID.Celo,
   CHAINID.Taiko,
-]
-
+];
 
 export interface ChainData {
   id: CHAINID;
@@ -23,11 +23,11 @@ export interface ChainData {
   rpcUrl: string;
   imgUrl: string;
   defuture: {
-    defaultTokens: [string, string],
-    router: string
-    dexName: string
-    dexRouter: string
-  }
+    defaultTokens: [string, string];
+    router: string;
+    dexName: string;
+    dexRouter: string;
+  };
 }
 
 /**

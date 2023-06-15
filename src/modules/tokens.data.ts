@@ -6,7 +6,7 @@ import celo from "../assets/chain/celo.svg";
 
 const TOKENS: TokenData[] = [
   {
-    chainId: CHAINID.Mumbai,
+    chainId: CHAINID.Goerli,
     name: "MATIC",
     decimals: 18,
     symbol: "MATIC",
@@ -14,17 +14,9 @@ const TOKENS: TokenData[] = [
     isWrappedToken: false,
     imgUrl: polygon,
   },
+
   {
-    chainId: CHAINID.Mumbai,
-    name: "USDC",
-    decimals: 18,
-    symbol: "USDC",
-    address: "0x43cc87C7a8784A8Ba699093e85397C0502af65af",
-    isWrappedToken: false,
-    imgUrl: usdc,
-  },
-  {
-    chainId: CHAINID.Scroll,
+    chainId: CHAINID.Goerli,
     name: "ETH",
     decimals: 18,
     symbol: "ETH",
